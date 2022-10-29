@@ -141,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 2646322424971677764, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7518524041257459519, guid: 7bc86528b2798d640bf85092fece8867, type: 3}
+      objectReference: {fileID: 21300000, guid: bcd9f4d5bf9653f44a527859c01f26ec, type: 3}
     - target: {fileID: 2646322424971677764, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -155,12 +155,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7974571452864089234, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974571452864089234, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974571452864089234, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974571452864089234, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.48
       objectReference: {fileID: 0}
     - target: {fileID: 7974571452864089234, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.01
+      value: -2.509
       objectReference: {fileID: 0}
     - target: {fileID: 7974571452864089234, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -214,20 +226,34 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.07503867, y: 0.045023322}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0625, y: 0.75}
+    oldSize: {x: 6.4, y: 6.4}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0625, y: 0.75}
+  m_Size: {x: 4.0340657, y: 5.882703}
   m_EdgeRadius: 0
---- !u!50 &151587567
+--- !u!114 &151587570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151587565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f10bd4afa6534d49bbc400c97703fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  jump_speed: 2
+--- !u!50 &151587571
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -239,7 +265,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -293,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7974571452864089234, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.49
+      value: -5.81
       objectReference: {fileID: 0}
     - target: {fileID: 7974571452864089234, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -347,7 +373,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.003471017, y: 0.5349871}
   m_SpriteTilingProperty:
     border: {x: 0.44, y: 0, z: 0.44, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -358,29 +384,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0625, y: 0.75}
+  m_Size: {x: 3.5548518, y: 0.5275736}
   m_EdgeRadius: 0
---- !u!50 &657580938
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657580936}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1674993559
 GameObject:
   m_ObjectHideFlags: 0
