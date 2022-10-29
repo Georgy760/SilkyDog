@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsManager : MonoBehaviour
 {
-    [SerializeField] private GameObject settings_panel;
     [SerializeField] private SceneLoader scene_loader;
 
     public void OnConnectClick()
@@ -30,6 +29,11 @@ public class ButtonsManager : MonoBehaviour
 
     public void OnSettingsClick()
     {
-        settings_panel.SetActive(true);
+        
+    }
+
+    public void OnBackClick()
+    {
+
     }
 }

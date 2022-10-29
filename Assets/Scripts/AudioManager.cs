@@ -22,14 +22,14 @@ public class AudioManager : MonoBehaviour
         public AudioClip audio_clip;
     }
 
-    private List<Button> buttons;
-
     public static AudioManager instance;
+
+    private List<Button> buttons;
 
     private void OnEnable()
     {
         buttons = new List<Button>();
-        buttons.AddRange(FindObjectsOfType<Button>());
+        buttons.AddRange(Resources.FindObjectsOfTypeAll<Button>());
 
         if (buttons.Count != 0)
         {
