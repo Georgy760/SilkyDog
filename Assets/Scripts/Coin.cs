@@ -6,7 +6,7 @@ public class Coin : MovingObj
 {
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player") {
+        if (col.gameObject.CompareTag("Player")) {
             // TODO: добавить зву сбора монеток
             DogControl player = col.gameObject.GetComponent<DogControl>();
             player.coins += 1;

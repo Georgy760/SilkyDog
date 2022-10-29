@@ -21,7 +21,7 @@ public class MovingObj : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Player" && is_killing) {
+        if (col.gameObject.CompareTag("Player") && is_killing) {
             Debug.Log("Game-Over");
 
             // TODO: прописать изменения при поражении

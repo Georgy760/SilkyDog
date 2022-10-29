@@ -14,6 +14,7 @@ public class DogControl : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool is_grounded;
+    private int coll_counts = 0;
 
     private void Start()
     {
@@ -26,15 +27,22 @@ public class DogControl : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetKey(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && is_grounded) {
+        Debug.Log(coll_counts);
+        if ((Input.GetKey(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && is_grounded && coll_counts > 0) {
             is_grounded = false;
             rb.AddForce(transform.up * jump_speed * 100);
         }
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
+        coll_counts++;
         if (col.gameObject.layer == 6)
             is_grounded = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        coll_counts--;
     }
 
 
