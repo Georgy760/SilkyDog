@@ -339,6 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f10bd4afa6534d49bbc400c97703fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 7
   objects_speed: 5
   jump_speed: 2
   coins_text: {fileID: 1846365208}
@@ -689,6 +690,7 @@ MonoBehaviour:
   obstacles:
   - {fileID: 4533940082980916512, guid: f4c006a81306d054fa9e53214272c078, type: 3}
   - {fileID: 5075225650379744793, guid: ce6b6e37e2f172241b6fcf97183f2d4e, type: 3}
+  - {fileID: 634342460198940266, guid: 2767981a72b9c3549a7093f01a4224b8, type: 3}
   spawn_pos: {fileID: 1611869444}
   backgrounds:
   - {fileID: 21300000, guid: 6d32535503710a64789f8711ca22c747, type: 3}
