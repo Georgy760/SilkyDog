@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class DogControl : MonoBehaviour
 {
+    [SerializeField] internal float speed = 7;
     [SerializeField] internal float objects_speed = 5;
 
     [SerializeField] private float jump_speed = 1000;
@@ -48,10 +49,22 @@ public class DogControl : MonoBehaviour
     {
         metres_text.text = "Metres: " + distance.ToString();
         this.transform.rotation = new Quaternion(0, 0, 0, 1);
-        this.transform.position = new Vector3(-4.48f, this.transform.position.y, this.transform.position.z);
+        //this.transform.position = new Vector3(-4.48f, this.transform.position.y, this.transform.position.z);
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && is_grounded && coll_counts > 0) {
             is_grounded = false;
             rb.AddForce(transform.up * jump_speed * 100);
+        }
+        else if (Input.GetKey(KeyCode.A)) {
+            this.gameObject.transform.Translate(speed * Time.deltaTime * -1, 0, 0);
+        }
+        else if (Input.GetKey(KeyCode.D)) {
+            this.gameObject.transform.Translate(speed * Time.deltaTime, 0, 0);
+        }
+        if (this.gameObject.transform.position.x < -8.4f) {
+            this.gameObject.transform.position = new Vector3(-8.4f, this.gameObject.transform.position.y, 0);
+        }
+        else if (this.gameObject.transform.position.x > 8.4f) {
+            this.gameObject.transform.position = new Vector3(8.4f, this.gameObject.transform.position.y, 0);
         }
     }
     private void OnCollisionEnter2D(Collision2D col)
