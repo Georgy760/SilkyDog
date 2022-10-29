@@ -6,7 +6,7 @@ public class MovingObj : MonoBehaviour
 {
     private float SPEED = 500;
 
-    internal bool is_killing = false;
+    [SerializeField] internal bool is_killing = false;
     private float life_time = 100;
 
     private void FixedUpdate()
@@ -23,7 +23,9 @@ public class MovingObj : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player") && is_killing) {
             Debug.Log("Game-Over");
-
+            DogControl player = col.gameObject.GetComponent<DogControl>();
+            player.canvas_play.SetActive(false);
+            player.canvas_lose.SetActive(true);
             // TODO: прописать изменения при поражении
 
             Time.timeScale = 0;
