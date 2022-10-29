@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<GameObject> obstacles;
+    [SerializeField] private Transform spawn_pos;
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator Create_Obstacle()
     {
-        
+        int n = Random.Range(0, obstacles.Count);
+        GameObject obj = Instantiate(obstacles[n], spawn_pos);
+
+        float pass_time = 5/GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed * 3;
+
+        yield return new WaitForSeconds(pass_time);
     }
 }

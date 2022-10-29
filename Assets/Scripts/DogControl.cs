@@ -6,9 +6,11 @@ using System;
 using UnityEngine.UIElements;
 
 public class DogControl : MonoBehaviour
-{   
-    [SerializeField] private float speed;
+{
+    [SerializeField] internal float objects_speed = 5;
+
     [SerializeField] private float jump_speed = 1000;
+
     [SerializeField] private Text coins_text;
     [SerializeField] private Text metres_text;
     [SerializeField] internal GameObject canvas_play;

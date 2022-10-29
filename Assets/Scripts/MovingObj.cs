@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class MovingObj : MonoBehaviour
 {
-    private float SPEED = 500;
+    private float speed;
 
     [SerializeField] internal bool is_killing = false;
-    private float life_time = 100;
+
+    private void Start()
+    {
+        speed = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed;
+    }
 
     private void FixedUpdate()
     {
-        this.gameObject.transform.Translate(5 * Time.deltaTime * -1, 0, 0);
+        this.gameObject.transform.Translate(speed * Time.deltaTime * -1, 0, 0);
     }
     
     private void OnBecameInvisible()
@@ -26,8 +30,6 @@ public class MovingObj : MonoBehaviour
             DogControl player = col.gameObject.GetComponent<DogControl>();
             player.canvas_play.SetActive(false);
             player.canvas_lose.SetActive(true);
-            // TODO: прописать изменения при поражении
-
             Time.timeScale = 0;
         }
     }
