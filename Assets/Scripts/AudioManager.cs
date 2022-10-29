@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum SoundType
+{
+    Music,
+    Effects
+}
+
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource music_source;
@@ -65,6 +71,19 @@ public class AudioManager : MonoBehaviour
         instance = this;
 
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void SetVolume(float volume, SoundType type)
+    {
+        switch (type)
+        {
+            case SoundType.Music:
+                music_source.volume = volume;
+                break;
+            case SoundType.Effects:
+                effects_source.volume = volume;
+                break;
+        }
     }
 
     public AudioClip GetSound(string key)

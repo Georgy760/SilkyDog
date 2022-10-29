@@ -1000,7 +1000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 418537129}
-  audioSource: {fileID: 1843546749}
+  type: 0
 --- !u!1 &425545071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,7 +1834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 908784330}
-  audioSource: {fileID: 245039606}
+  type: 1
 --- !u!1 &1030533678
 GameObject:
   m_ObjectHideFlags: 0
