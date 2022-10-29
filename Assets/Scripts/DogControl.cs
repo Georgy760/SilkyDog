@@ -16,20 +16,22 @@ public class DogControl : MonoBehaviour
     [SerializeField] internal GameObject canvas_play;
     [SerializeField] internal GameObject canvas_lose;
     
-
     internal int coins = 0;
 
     private Rigidbody2D rb;
     private bool is_grounded;
     private int coll_counts = 0;
     private double distance;
+    private Generator generator;
 
     private void Start()
     {
         coins = 0;
         distance = 0;
-        rb = this.gameObject.GetComponent<Rigidbody2D>();
         is_grounded = true;
+
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
+        generator = GameObject.FindObjectsOfType<Generator>()[0];
 
         EventManager.eventOnCoinsCollect += (int coins_num) => coins_text.text = coins_num.ToString();
     }
@@ -37,6 +39,8 @@ public class DogControl : MonoBehaviour
     private void FixedUpdate()
     {
         distance += 0.1;
+        if (distance % 200 == 0)
+            generator.ChangeLocation();
         distance = Math.Round(distance, 2);
     }
 
