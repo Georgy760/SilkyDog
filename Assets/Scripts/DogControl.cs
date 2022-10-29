@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.UIElements;
 
 public class DogControl : MonoBehaviour
 {   
@@ -27,8 +28,8 @@ public class DogControl : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(coll_counts);
-        if ((Input.GetKey(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && is_grounded && coll_counts > 0) {
+        this.transform.rotation = new Quaternion(0, 0, 0, 1);
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) && is_grounded && coll_counts > 0) {
             is_grounded = false;
             rb.AddForce(transform.up * jump_speed * 100);
         }
