@@ -10,6 +10,8 @@ public class Coin : MovingObj
             // TODO: добавить зву сбора монеток
             DogControl player = col.gameObject.GetComponent<DogControl>();
             player.coins += 1;
+
+            EventManager.CallOnCoinsUpdate(player.coins);
             Destroy(this.gameObject);
         }
     }

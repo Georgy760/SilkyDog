@@ -261,6 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   jump_speed: 2
+  coins_text: {fileID: 1846365208}
 --- !u!50 &151587571
 Rigidbody2D:
   serializedVersion: 4
@@ -276,7 +277,7 @@ Rigidbody2D:
   m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -663,7 +664,7 @@ GameObject:
   - component: {fileID: 1846365209}
   - component: {fileID: 1846365208}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: TextCoins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,8 +687,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 766, y: 420}
-  m_SizeDelta: {x: 374.187, y: 70.2606}
+  m_AnchoredPosition: {x: 846, y: 420}
+  m_SizeDelta: {x: 187.4901, y: 70.2606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1846365208
 MonoBehaviour:
@@ -722,7 +723,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0421oins: 0"
+  m_Text: 0
 --- !u!222 &1846365209
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -766,7 +767,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 512, y: 433}
+  m_AnchoredPosition: {x: 682, y: 433}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983610290

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class DogControl : MonoBehaviour
 {   
     [SerializeField] private float speed;
     [SerializeField] private float jump_speed = 1000;
+    [SerializeField] private Text coins_text;
 
     internal int coins = 0;
 
@@ -17,6 +20,8 @@ public class DogControl : MonoBehaviour
         coins = 0;
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         is_grounded = true;
+
+        EventManager.eventOnCoinsCollect += (int coins_num) => coins_text.text = coins_num.ToString();
     }
 
     private void Update()
@@ -31,4 +36,7 @@ public class DogControl : MonoBehaviour
         if (col.gameObject.layer == 6)
             is_grounded = true;
     }
+
+
+
 }
