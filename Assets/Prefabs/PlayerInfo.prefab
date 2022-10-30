@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 2571265441522453970}
   - component: {fileID: 2571265441522453969}
   - component: {fileID: 2571265441522453980}
+  - component: {fileID: 8543526142989527420}
   m_Layer: 5
   m_Name: PlayerInfo
   m_TagString: Untagged
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 06cac5ab2772f5f43a23711651788ca0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e63c125e7db3eea40b3ff64473484e51, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -262,6 +263,21 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &8543526142989527420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2571265441522453975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae2e9519cbcb0b438dee145d598ae39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  place_text: {fileID: 2571265440803632355}
+  nick_name_text: {fileID: 2571265442202591069}
+  score_text: {fileID: 2571265441950164800}
 --- !u!1 &2571265441950164806
 GameObject:
   m_ObjectHideFlags: 0
