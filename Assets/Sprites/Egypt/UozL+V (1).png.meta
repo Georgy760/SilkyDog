@@ -138,7 +138,301 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: UozL+V (1)_0
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 383
+        width: 64
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30d01e59b0a201948b2367b2ecdde70d
+      internalID: 95268090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_1
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 383
+        width: 65
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31b344271b7ef5741a16787845af466d
+      internalID: 1823079479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_2
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 383
+        width: 65
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7119ff7a0c073d54ea412452bfe9b1d8
+      internalID: 1689235254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_3
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 383
+        width: 65
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75c536f3b3a6a29448a5784e90910405
+      internalID: -570071539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_4
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 394
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 925d8f5122d33774792e9df27e9adb68
+      internalID: 1314583883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_5
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 394
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 827e096321ab95447ac89e07536b21e2
+      internalID: 1775015108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_6
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 394
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7574d837ab8327842915acaa108e4513
+      internalID: 973923906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_7
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 318
+        width: 38
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a3285d82dd434949b3dbe80ed842927
+      internalID: -921841636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_8
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 255
+        width: 37
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f608a3a564ba100418abcdef1cb1a30d
+      internalID: -2142076575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_9
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 318
+        width: 37
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dd2505382006794c839fc60f99c7743
+      internalID: -767613686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_10
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 278
+        width: 43
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c45bbd0182d82b4d8b5970ebbe4b5c5
+      internalID: 1344678702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_11
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 255
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eae25ebaf27dc43498b4c216f651f0f9
+      internalID: -598833453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_12
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 132
+        width: 48
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b2a82d0f940a54b9cd32599271971c
+      internalID: -689148986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UozL+V (1)_13
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 18
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0a7d1e3cea18d94f931a79fca7ba155
+      internalID: -1652026582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -149,7 +443,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UozL+V (1)_1: 1823079479
+      UozL+V (1)_8: -2142076575
+      UozL+V (1)_13: -1652026582
+      UozL+V (1)_11: -598833453
+      UozL+V (1)_3: -570071539
+      UozL+V (1)_6: 973923906
+      UozL+V (1)_4: 1314583883
+      UozL+V (1)_0: 95268090
+      UozL+V (1)_7: -921841636
+      UozL+V (1)_5: 1775015108
+      UozL+V (1)_12: -689148986
+      UozL+V (1)_9: -767613686
+      UozL+V (1)_2: 1689235254
+      UozL+V (1)_10: 1344678702
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

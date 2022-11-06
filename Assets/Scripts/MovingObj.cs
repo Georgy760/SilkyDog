@@ -20,7 +20,7 @@ public class MovingObj : MonoBehaviour
     
     private void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+        StartCoroutine(DestroyAfterInvis());
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -32,5 +32,11 @@ public class MovingObj : MonoBehaviour
             player.canvas_lose.SetActive(true);
             Time.timeScale = 0;
         }
+    }
+    IEnumerator DestroyAfterInvis()
+    {
+        yield return new WaitForSeconds(7);
+        if (this.gameObject)
+            Destroy(this.gameObject);
     }
 }
