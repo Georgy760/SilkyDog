@@ -53,6 +53,7 @@ public class DogControl : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && is_grounded && coll_counts > 0) {
             is_grounded = false;
             rb.AddForce(transform.up * jump_speed * 100);
+            AudioManager.instance.PlayOneShot(AudioManager.instance.GetSound("dog_jump"), SoundType.Effects);
         }
         else if (Input.GetKey(KeyCode.A)) {
             this.gameObject.transform.Translate(speed * Time.deltaTime * -1, 0, 0);

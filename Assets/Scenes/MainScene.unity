@@ -5662,6 +5662,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4459224752302859477, guid: a5019bcb32e38904ba4202a8972d9755, type: 3}
+      propertyPath: sounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459224752302859477, guid: a5019bcb32e38904ba4202a8972d9755, type: 3}
+      propertyPath: sounds.Array.data[1].key
+      value: dog_jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459224752302859477, guid: a5019bcb32e38904ba4202a8972d9755, type: 3}
+      propertyPath: sounds.Array.data[2].key
+      value: coin_collect
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459224752302859477, guid: a5019bcb32e38904ba4202a8972d9755, type: 3}
+      propertyPath: sounds.Array.data[1].audio_clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ffa4ad311f50a5f42a332286908c4b0a, type: 3}
+    - target: {fileID: 4459224752302859477, guid: a5019bcb32e38904ba4202a8972d9755, type: 3}
+      propertyPath: sounds.Array.data[2].audio_clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ea1c2e041a7cc6b4889ab18a55c942d3, type: 3}
     - target: {fileID: 4459224752302859478, guid: a5019bcb32e38904ba4202a8972d9755, type: 3}
       propertyPath: m_RootOrder
       value: 2

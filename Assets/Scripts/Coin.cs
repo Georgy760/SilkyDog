@@ -11,6 +11,7 @@ public class Coin : MovingObj
             DogControl player = col.gameObject.GetComponent<DogControl>();
             player.coins += 1;
 
+            AudioManager.instance.PlayOneShot(AudioManager.instance.GetSound("coin_collect"), SoundType.Effects);
             EventManager.CallOnCoinsUpdate(player.coins);
             Destroy(this.gameObject);
         }
