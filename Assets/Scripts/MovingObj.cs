@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MovingObj : MonoBehaviour
 {
-    private float speed;
+    [SerializeField] private float speed;
 
     [SerializeField] internal bool is_killing = false;
 
     private void Start()
     {
-        speed = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed;
+        if(speed <= 0)
+            speed = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed;
     }
 
     private void FixedUpdate()
