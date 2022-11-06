@@ -73,6 +73,32 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public void PlayOneShot(AudioClip clip, SoundType type)
+    {
+        switch (type)
+        {
+            case SoundType.Music:
+                music_source.PlayOneShot(clip);
+                break;
+            case SoundType.Effects:
+                effects_source.PlayOneShot(clip);
+                break;
+        }
+    }
+
+    public void Stop(SoundType type)
+    {
+        switch (type)
+        {
+            case SoundType.Music:
+                music_source.Stop();
+                break;
+            case SoundType.Effects:
+                effects_source.Stop();
+                break;
+        }
+    }
+
     public void SetVolume(float volume, SoundType type)
     {
         switch (type)
@@ -93,15 +119,15 @@ public class AudioManager : MonoBehaviour
             if(key == sound.key)
             {
                 return sound.audio_clip;
-                break;
             }
         }
 
+        Debug.LogError("Sound with key '" + key + "' not found");
         return null;
     }
 
     private void OnClick()
     {
-        effects_source.PlayOneShot(GetSound("button_click"));
+        PlayOneShot(GetSound("button_click"), SoundType.Effects);
     }
 }
