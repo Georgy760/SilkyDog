@@ -5,12 +5,17 @@ using UnityEngine;
 public class MovingObj : MonoBehaviour
 {
     [SerializeField] private float speed;
-
     [SerializeField] internal bool is_killing = false;
 
-    private void Start()
+    public float Speed 
     {
-        if(speed <= 0)
+        get { return speed; }
+        private set { speed = value; } 
+    }
+
+    private void Awake()
+    {
+        if (speed <= 0)
             speed = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed;
     }
 
