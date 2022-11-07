@@ -6,7 +6,7 @@ using UnityEngine.UI;
 enum locations
 {
     China = 0,
-    India = 1,
+    India = 1,//
     Neon_Kazahstan = 2,//
     Desert_Egypt = 3,//
     Dubai = 4,//
@@ -41,7 +41,14 @@ public class Generator : MonoBehaviour
 
     private void Start()
     {
+        Vector3 start_pos_floor = new Vector3(0, -3.8f, 0);
+        Vector3 start_pos_mov_back = new Vector3(0, -2, 0);
+
         ChangeLocation();
+
+        Instantiate(current_floor, start_pos_floor, Quaternion.identity);
+        Instantiate(current_moving_back, start_pos_mov_back, Quaternion.identity);
+
         StartCoroutine(CreateObstacle());
         StartCoroutine(CreateMovingBack());
         StartCoroutine(CreateFloor());
@@ -52,7 +59,8 @@ public class Generator : MonoBehaviour
         GameObject floor = Instantiate(current_floor, floor_spawn_pos);
         MovingObj mov_floor = floor.GetComponent<MovingObj>();
         SpriteRenderer sprite_ren = floor.GetComponent<SpriteRenderer>();
-        float pass_time = (sprite_ren.bounds.size.x > 1 ? sprite_ren.bounds.size.x : 18)  / (mov_floor.Speed*2);
+
+        float pass_time = sprite_ren.bounds.size.x / (mov_floor.Speed * 2);
 
         yield return new WaitForSeconds(pass_time);
 
@@ -74,7 +82,7 @@ public class Generator : MonoBehaviour
 
     private IEnumerator CreateObstacle()
     {
-        int n = Random.Range(0, obstacles.Count);
+        int n = Random.Range(current_obstacles_start, current_obstacles_end);
         GameObject obstacle = Instantiate(obstacles[n], obstacle_spawn_pos);
 
         float pass_time = 5/GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed * 3 + 3;
