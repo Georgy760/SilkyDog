@@ -10,9 +10,9 @@ enum locations
     Neon_Kazahstan = 2,//
     Desert_Egypt = 3,//
     Dubai = 4,//
-    Rome = 5,//
+    Rome = 5,
     Paris = 6,
-    London = 7,
+    London = 7,//
     Tokyo = 8,
     New_York = 9//
 }

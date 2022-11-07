@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &55322636
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3297861057813733081, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1c1a84223db05a840993ae4a7919d3e1, type: 3}
+    - target: {fileID: 7107658663897883805, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_Name
+      value: MovingBack (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482349720571855375, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
 --- !u!1 &79794010
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,16 +936,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2646322424971677764, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_Size.x
-      value: 12.2
+      value: 6.72
       objectReference: {fileID: 0}
     - target: {fileID: 2646322424971677764, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_Size.y
-      value: 4.05
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2646322424971677764, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bf5e5fd505d2bf244b50039e2c06b8e8, type: 3}
+      objectReference: {fileID: 21300000, guid: 9a3c4504fd424c540a1a098805b6df20, type: 3}
     - target: {fileID: 2646322424971677764, guid: fcdcf39d4982a464394ffa0ec2ab23bd, type: 3}
       propertyPath: m_SortingOrder
       value: -2
@@ -996,7 +1057,7 @@ MonoBehaviour:
   - {fileID: 1628885717855684384, guid: 44e02d3fd0605ad44b8138f51eea86a4, type: 3}
   - {fileID: 8473873840529261036, guid: b891131d31846df44a93e34cbfa0941e, type: 3}
   static_backgrounds:
-  - {fileID: 21300000, guid: bf5e5fd505d2bf244b50039e2c06b8e8, type: 3}
+  - {fileID: 21300000, guid: fd13b55e8106a7549be87777ada8d478, type: 3}
   moving_backgrounds:
   - {fileID: 7107658663897883805, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
   floors:
@@ -1343,6 +1404,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3297861057813733081, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1c1a84223db05a840993ae4a7919d3e1, type: 3}
     - target: {fileID: 7107658663897883805, guid: 41eed53743c0fde43b332501f6119ca3, type: 3}
       propertyPath: m_Name
       value: MovingBack
