@@ -52,8 +52,7 @@ public class Generator : MonoBehaviour
         GameObject floor = Instantiate(current_floor, floor_spawn_pos);
         MovingObj mov_floor = floor.GetComponent<MovingObj>();
         SpriteRenderer sprite_ren = floor.GetComponent<SpriteRenderer>();
-
-        float pass_time = sprite_ren.bounds.size.x / (mov_floor.Speed*2);
+        float pass_time = (sprite_ren.bounds.size.x > 1 ? sprite_ren.bounds.size.x : 18)  / (mov_floor.Speed*2);
 
         yield return new WaitForSeconds(pass_time);
 
@@ -75,7 +74,7 @@ public class Generator : MonoBehaviour
 
     private IEnumerator CreateObstacle()
     {
-        int n = Random.Range(current_obstacles_start, current_obstacles_end);
+        int n = Random.Range(0, obstacles.Count);
         GameObject obstacle = Instantiate(obstacles[n], obstacle_spawn_pos);
 
         float pass_time = 5/GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed * 3 + 3;
