@@ -74,7 +74,7 @@ public class Generator : MonoBehaviour
 
     private IEnumerator CreateObstacle()
     {
-        int n = Random.Range(current_obstacles_start, current_obstacles_end);
+        int n = Random.Range(0, obstacles.Count);
         GameObject obstacle = Instantiate(obstacles[n], obstacle_spawn_pos);
 
         float pass_time = 5/GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed * 3 + 3;

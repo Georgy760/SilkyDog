@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2668709407268378743}
   - component: {fileID: 2668709407268378740}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tileset_156 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2668709407573878557}
   - component: {fileID: 2668709407573878546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tileset_15 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2668709407676461376}
   - component: {fileID: 2668709407676461377}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tileset_156
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 2668709408068707535}
   - component: {fileID: 2668709408068707533}
   - component: {fileID: 2668709408068707532}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tileset_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 2668709408470165464}
   - component: {fileID: 2668709408470165467}
   - component: {fileID: 2668709408470165466}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform_india
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2668709408995623811}
   - component: {fileID: 2668709408995623808}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tileset_15 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
