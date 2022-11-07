@@ -41,8 +41,10 @@ public class Generator : MonoBehaviour
 
     private void Start()
     {
-        Vector3 start_pos_floor = new Vector3(0, -3.8f, 0);
-        Vector3 start_pos_mov_back = new Vector3(0, -2, 0);
+        Vector3 start_pos_floor = Vector3.zero;
+        Vector3 start_pos_mov_back = Vector3.zero;
+        start_pos_floor.y = floor_spawn_pos.position.y;
+        start_pos_mov_back.y = back_spawn_pos.position.y;
 
         ChangeLocation();
 
