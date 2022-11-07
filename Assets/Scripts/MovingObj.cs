@@ -26,7 +26,8 @@ public class MovingObj : MonoBehaviour
     
     private void OnBecameInvisible()
     {
-        StartCoroutine(DestroyAfterInvis());
+        if (this.gameObject.activeSelf)
+            StartCoroutine(DestroyAfterInvis());
     }
 
     private void OnCollisionEnter2D(Collision2D col)
