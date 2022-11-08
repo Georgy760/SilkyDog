@@ -11,7 +11,7 @@ enum locations
     Desert_Egypt = 3,//back tiles
     Dubai = 4,//back
     Rome = 5,
-    Paris = 6,//
+    Paris = 6,//back
     London = 7,//back
     Tokyo = 8,//back
     New_York = 9//back
