@@ -40,7 +40,7 @@ public class DogControl : MonoBehaviour
     private void FixedUpdate()
     {
         distance += 0.1;
-        if (distance % 200 == 0)
+        if (distance % 100 == 0)
             generator.ChangeLocation();
         distance = Math.Round(distance, 2);
     }

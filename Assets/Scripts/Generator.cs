@@ -6,15 +6,15 @@ using UnityEngine.UI;
 enum locations
 {
     China = 0,
-    India = 1,//
-    Neon_Kazahstan = 2,//
-    Desert_Egypt = 3,//
-    Dubai = 4,//
+    India = 1,//back tiles
+    Neon_Kazahstan = 2,//back
+    Desert_Egypt = 3,//back tiles
+    Dubai = 4,//back
     Rome = 5,
-    Paris = 6,
-    London = 7,//
-    Tokyo = 8,
-    New_York = 9//
+    Paris = 6,//
+    London = 7,//back
+    Tokyo = 8,//back
+    New_York = 9//back
 }
 
 public class Generator : MonoBehaviour
@@ -29,6 +29,7 @@ public class Generator : MonoBehaviour
     [SerializeField] private Transform obstacle_spawn_pos;
     [SerializeField] private Transform back_spawn_pos;
     [SerializeField] private Transform floor_spawn_pos;
+    [SerializeField] private Transform main_back_spawn_pos;
 
     [SerializeField] private SpriteRenderer static_background;
 
@@ -51,6 +52,7 @@ public class Generator : MonoBehaviour
         Instantiate(current_floor, start_pos_floor, Quaternion.identity);
         Instantiate(current_moving_back, start_pos_mov_back, Quaternion.identity);
 
+
         StartCoroutine(CreateObstacle());
         StartCoroutine(CreateMovingBack());
         StartCoroutine(CreateFloor());
@@ -62,7 +64,7 @@ public class Generator : MonoBehaviour
         MovingObj mov_floor = floor.GetComponent<MovingObj>();
         SpriteRenderer sprite_ren = floor.GetComponent<SpriteRenderer>();
 
-        float pass_time = sprite_ren.bounds.size.x / (mov_floor.Speed * 2);
+        float pass_time = sprite_ren.bounds.size.x / mov_floor.Speed;
 
         yield return new WaitForSeconds(pass_time);
 
@@ -99,6 +101,7 @@ public class Generator : MonoBehaviour
         location_id = Random.Range(0, static_backgrounds.Count);
 
         static_background.sprite = static_backgrounds[location_id];
+
         current_moving_back = moving_backgrounds[location_id];
         current_floor = floors[location_id];
         current_obstacles_start = location_id * 5;
