@@ -2427,6 +2427,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3405688878521331996, guid: 6839544a2b7507b43b73b0d73d99f241, type: 3}
+      propertyPath: load_screen
+      value: 
+      objectReference: {fileID: 4138472500741623790, guid: a584f79a24fc37b42ad3d7c53d6b7431, type: 3}
     - target: {fileID: 3405688879297555305, guid: 6839544a2b7507b43b73b0d73d99f241, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4784,8 +4788,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 813.5, y: 433}
-  m_SizeDelta: {x: 120.5939, y: 111.7675}
+  m_AnchoredPosition: {x: 812, y: 425}
+  m_SizeDelta: {x: 97.8462, y: 111.7675}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2050524114
 MonoBehaviour:
@@ -4887,7 +4891,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b46bb2e69f090df4592702ea2f69e31d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9714bad7e0cc6f84c99bcce7be5f923a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -12,7 +12,7 @@ public class DogControl : MonoBehaviour
 
     [SerializeField] private float jump_speed = 1000;
 
-    [SerializeField] private Text coins_text;
+    [SerializeField] internal Text coins_text;
     [SerializeField] private Text metres_text;
     [SerializeField] internal GameObject panel_play;
     [SerializeField] internal GameObject panel_lose;
@@ -33,7 +33,7 @@ public class DogControl : MonoBehaviour
 
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         generator = GameObject.FindObjectsOfType<Generator>()[0];
-
+        EventManager.eventOnCoinsCollect = null;
         EventManager.eventOnCoinsCollect += (int coins_num) => coins_text.text = coins_num.ToString();
     }
 

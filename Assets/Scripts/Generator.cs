@@ -39,6 +39,8 @@ public class Generator : MonoBehaviour
     private GameObject current_moving_back;
     private GameObject current_floor;
 
+    private GameObject old_back;
+
 
     private void Start()
     {
@@ -73,11 +75,18 @@ public class Generator : MonoBehaviour
 
     private IEnumerator CreateMovingBack()
     {
+        if (old_back && current_moving_back) {
+            if (old_back.GetComponent<SpriteRenderer>().sprite != current_moving_back.GetComponent<SpriteRenderer>().sprite)
+                old_back.GetComponent<SpriteRenderer>().sprite = current_moving_back.GetComponent<SpriteRenderer>().sprite;
+        }
+
         GameObject moving_back = Instantiate(current_moving_back, back_spawn_pos);
         MovingObj back = moving_back.GetComponent<MovingObj>();
         SpriteRenderer sprite_ren = moving_back.GetComponent<SpriteRenderer>();
 
         float pass_time = sprite_ren.bounds.size.x / back.Speed;
+
+        old_back = moving_back;
 
         yield return new WaitForSeconds(pass_time);
 

@@ -26,7 +26,7 @@ public class MovingObj : MonoBehaviour
     
     private void OnBecameInvisible()
     {
-        if (this.gameObject.activeSelf)
+        if (this.name == "MovingObj")
             StartCoroutine(DestroyAfterInvis());
     }
 
