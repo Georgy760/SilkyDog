@@ -33,10 +33,9 @@ public class MovingObj : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player") && is_killing) {
-            Debug.Log("Game-Over");
             DogControl player = col.gameObject.GetComponent<DogControl>();
-            player.canvas_play.SetActive(false);
-            player.canvas_lose.SetActive(true);
+            player.panel_play.SetActive(false);
+            player.panel_lose.SetActive(true);
             Time.timeScale = 0;
         }
     }

@@ -14,9 +14,9 @@ public class DogControl : MonoBehaviour
 
     [SerializeField] private Text coins_text;
     [SerializeField] private Text metres_text;
-    [SerializeField] internal GameObject canvas_play;
-    [SerializeField] internal GameObject canvas_lose;
-    
+    [SerializeField] internal GameObject panel_play;
+    [SerializeField] internal GameObject panel_lose;
+
     internal int coins = 0;
 
     private Rigidbody2D rb;
@@ -78,5 +78,10 @@ public class DogControl : MonoBehaviour
     private void OnCollisionExit2D(Collision2D col)
     {
         coll_counts--;
+    }
+
+    public void SetPause(bool pause)
+    {
+        Time.timeScale = pause ? 0 : 1;
     }
 }

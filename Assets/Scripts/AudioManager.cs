@@ -11,8 +11,8 @@ public enum SoundType
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource music_source;
-    [SerializeField] private AudioSource effects_source;
+    [SerializeField] internal AudioSource music_source;
+    [SerializeField] internal AudioSource effects_source;
     [SerializeField] private Sound[] sounds;
 
     [System.Serializable]
@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
 
     private List<Button> buttons;
 
-    private void OnEnable()
+    private void Start()
     {
         buttons = new List<Button>();
         buttons.AddRange(Resources.FindObjectsOfTypeAll<Button>());
