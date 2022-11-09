@@ -14,16 +14,20 @@ public class SceneLoader : MonoBehaviour
     private AsyncOperation async_operation;
     private float progress;
 
-    public void LoadScene()
+    public void LoadScene(string name)
     {
-        load_screen.SetActive(true);
-        StartCoroutine(AsyncLoading());
+        Time.timeScale = 1;
+        StartCoroutine(AsyncLoading(name));
     }
 
-    private IEnumerator AsyncLoading()
+    private IEnumerator AsyncLoading(string name)
     {
+        GameObject screen = Instantiate(load_screen, GameObject.FindObjectsOfType<Canvas>()[0].transform);
+        progress_bar = screen.transform.Find("ProgressBar").Find("Fill").gameObject.GetComponent<Image>();
+        progress_text = screen.transform.Find("ProgressBar").Find("ProgressText").gameObject.GetComponent<TextMeshProUGUI>();
+
         yield return new WaitForSeconds(1f);
-        async_operation = SceneManager.LoadSceneAsync("GameScene");
+        async_operation = SceneManager.LoadSceneAsync(name);
 
         while (!async_operation.isDone)
         {

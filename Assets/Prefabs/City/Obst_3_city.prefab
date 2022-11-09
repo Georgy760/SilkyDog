@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3160082244766254735}
   - component: {fileID: 3160082244766254734}
   - component: {fileID: 3160082244766254729}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform_city (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3160082244835744315}
   - component: {fileID: 3160082244835744312}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goodly-2x_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3160082245193271923}
   - component: {fileID: 3160082245193271920}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goodly-2x_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3160082245240689554}
   - component: {fileID: 3160082245240689555}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goodly-2x_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 3160082245490808151}
   - component: {fileID: 3160082245490808150}
   - component: {fileID: 3160082245490808145}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform_city
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3160082245630045321}
   - component: {fileID: 3160082245630045326}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goodly-2x_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 3160082245705236951}
   - component: {fileID: 3160082245705236949}
   - component: {fileID: 3160082245705236948}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goodly-2x_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3160082245752676696}
   - component: {fileID: 3160082245752676697}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goodly-2x_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3160082246056372041}
   - component: {fileID: 3160082246056372046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goodly-2x_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -835,7 +835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3160082246204113555}
   - component: {fileID: 3160082246204113552}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goodly-2x_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 3160082246332037503}
   - component: {fileID: 3160082246332037501}
   - component: {fileID: 3160082246332037500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goodly-2x_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,7 +1030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3160082246496837864}
   - component: {fileID: 3160082246496837865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goodly-2x_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1116,7 +1116,7 @@ GameObject:
   - component: {fileID: 1509543037183815681}
   - component: {fileID: 2220518348169560911}
   - component: {fileID: 4014984128251259880}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Coin Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7876420975812943062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obst_3_city
   m_TagString: Untagged
   m_Icon: {fileID: 0}

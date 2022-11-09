@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum SoundType
 {
@@ -24,9 +25,11 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    private List<Button> buttons;
+    private List<Button> buttons = new List<Button>();
 
-    private void Start()
+    private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         buttons = new List<Button>();
         buttons.AddRange(Resources.FindObjectsOfTypeAll<Button>());
@@ -126,8 +129,5 @@ public class AudioManager : MonoBehaviour
         return null;
     }
 
-    private void OnClick()
-    {
-        PlayOneShot(GetSound("button_click"), SoundType.Effects);
-    }
+    private void OnClick() => PlayOneShot(GetSound("button_click"), SoundType.Effects);
 }
