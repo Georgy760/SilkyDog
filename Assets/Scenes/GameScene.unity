@@ -1277,7 +1277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639353169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.5, y: -4, z: 0}
+  m_LocalPosition: {x: 17.5, y: -4.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2861,13 +2861,13 @@ MonoBehaviour:
   - {fileID: 7107658663897883805, guid: 1860588cbdbd16b49b4cf59bd3640390, type: 3}
   floors:
   - {fileID: 776173119664397246, guid: 289272e4f427a544b9e20cb0513467d7, type: 3}
-  - {fileID: 1517851072163258068, guid: ee1d056e797302b4a83052f8094a8e33, type: 3}
-  - {fileID: 776173119664397246, guid: 289272e4f427a544b9e20cb0513467d7, type: 3}
-  - {fileID: 776173119664397246, guid: 289272e4f427a544b9e20cb0513467d7, type: 3}
-  - {fileID: 776173119664397246, guid: 289272e4f427a544b9e20cb0513467d7, type: 3}
-  - {fileID: 776173119664397246, guid: 289272e4f427a544b9e20cb0513467d7, type: 3}
-  - {fileID: 776173119664397246, guid: 289272e4f427a544b9e20cb0513467d7, type: 3}
-  - {fileID: 776173119664397246, guid: 289272e4f427a544b9e20cb0513467d7, type: 3}
+  - {fileID: 776173119664397246, guid: f67514667e9c44e429c932d1b4c395b6, type: 3}
+  - {fileID: 776173119664397246, guid: 13dabbc3614f0d74f822bf706cc10a2c, type: 3}
+  - {fileID: 776173119664397246, guid: c9b8f7fc1ff46324cab257fd6041b6e7, type: 3}
+  - {fileID: 776173119664397246, guid: 740493f6e1e79d6409369882702dfeab, type: 3}
+  - {fileID: 776173119664397246, guid: c3005df0ce4aad140b4593b4ad831f17, type: 3}
+  - {fileID: 776173119664397246, guid: 740493f6e1e79d6409369882702dfeab, type: 3}
+  - {fileID: 776173119664397246, guid: 13dabbc3614f0d74f822bf706cc10a2c, type: 3}
   obstacle_spawn_pos: {fileID: 1611869444}
   back_spawn_pos: {fileID: 164782095}
   floor_spawn_pos: {fileID: 639353170}
