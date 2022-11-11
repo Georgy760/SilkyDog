@@ -51,7 +51,9 @@ public class Generator : MonoBehaviour
         ChangeLocation();
 
         GameObject FirstFloor = Instantiate(current_floor, floor_spawn_pos.transform.position, Quaternion.identity, floor_spawn_pos);
-        FirstFloor.transform.localPosition = new Vector3(-13, -0.1622f, 0);
+        FirstFloor.transform.localPosition = new Vector3(-13, 0, 0);
+        GameObject SecondFloor = Instantiate(current_floor, floor_spawn_pos.transform.position, Quaternion.identity, floor_spawn_pos);
+        SecondFloor.transform.localPosition = new Vector3(-22, 0, 0);
         Instantiate(current_moving_back, start_pos_mov_back, Quaternion.identity);
 
 
@@ -62,7 +64,7 @@ public class Generator : MonoBehaviour
 
     private IEnumerator CreateFloor()
     {
-        GameObject floor = Instantiate(current_floor, floor_spawn_pos);
+        GameObject floor = Instantiate(current_floor, floor_spawn_pos.transform.position, Quaternion.identity, floor_spawn_pos);
         MovingObj mov_floor = floor.GetComponent<MovingObj>();
         SpriteRenderer sprite_ren = floor.GetComponent<SpriteRenderer>();
 
