@@ -12,7 +12,9 @@ public class Coin : MovingObj
             player.coins += 1;
 
             AudioManager.instance.PlayOneShot(AudioManager.instance.GetSound("coin_collect"), SoundType.Effects);
+            Debug.Log("Coin Collected-0");
             EventManager.CallOnCoinsUpdate(player.coins);
+            Debug.Log("Coin Collected-1");
             Destroy(this.gameObject);
         }
     }

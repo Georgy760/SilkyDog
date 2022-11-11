@@ -44,14 +44,14 @@ public class Generator : MonoBehaviour
 
     private void Start()
     {
-        Vector3 start_pos_floor = Vector3.zero;
+        Vector3 start_pos_floor = new Vector3(0,floor_spawn_pos.position.y,0);
         Vector3 start_pos_mov_back = Vector3.zero;
-        start_pos_floor.y = floor_spawn_pos.position.y;
         start_pos_mov_back.y = back_spawn_pos.position.y;
 
         ChangeLocation();
 
-        Instantiate(current_floor, start_pos_floor, Quaternion.identity);
+        GameObject FirstFloor = Instantiate(current_floor, floor_spawn_pos.transform.position, Quaternion.identity, floor_spawn_pos);
+        FirstFloor.transform.localPosition = new Vector3(-13, -0.1622f, 0);
         Instantiate(current_moving_back, start_pos_mov_back, Quaternion.identity);
 
 
@@ -66,7 +66,7 @@ public class Generator : MonoBehaviour
         MovingObj mov_floor = floor.GetComponent<MovingObj>();
         SpriteRenderer sprite_ren = floor.GetComponent<SpriteRenderer>();
 
-        float pass_time = sprite_ren.bounds.size.x / mov_floor.Speed;
+        float pass_time = sprite_ren.bounds.size.x / (mov_floor.Speed*2);
 
         yield return new WaitForSeconds(pass_time);
 
@@ -117,36 +117,3 @@ public class Generator : MonoBehaviour
         current_obstacles_end = (location_id * 5) + 5;
     }
 }
-/*switch (location_id)
-{
-    case (int) locations.China:
-        location = locations.China;
-        break;
-    case (int)locations.India:
-        location = locations.India;
-        break;
-    case (int)locations.Neon_Kazahstan:
-        location = locations.Neon_Kazahstan;
-        break;
-    case (int)locations.Desert_Egypt:
-        location = locations.Desert_Egypt;
-        break;
-    case (int)locations.Dubai:
-        location = locations.Dubai;
-        break;
-    case (int)locations.Rome:
-        location = locations.Rome;
-        break;
-    case (int)locations.Paris:
-        location = locations.Paris;
-        break;
-    case (int)locations.London:
-        location = locations.London;
-        break;
-    case (int)locations.Tokyo:
-        location = locations.Tokyo;
-        break;
-    case (int)locations.New_York:
-        location = locations.New_York;
-        break;
-}*/

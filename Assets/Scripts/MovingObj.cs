@@ -21,18 +21,19 @@ public class MovingObj : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log("TimeScale:" + Time.timeScale.ToString());
         this.gameObject.transform.Translate(speed * Time.deltaTime * -1, 0, 0);
     }
     
     private void OnBecameInvisible()
     {
-        if (this.name == "MovingObj")
-            StartCoroutine(DestroyAfterInvis());
+        StartCoroutine(DestroyAfterInvis());
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player") && is_killing) {
+            Debug.Log("Die");
             DogControl player = col.gameObject.GetComponent<DogControl>();
             player.panel_play.SetActive(false);
             player.panel_lose.SetActive(true);

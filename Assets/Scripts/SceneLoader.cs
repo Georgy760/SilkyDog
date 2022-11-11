@@ -27,9 +27,9 @@ public class SceneLoader : MonoBehaviour
         progress_text = screen.transform.Find("ProgressBar").Find("ProgressText").gameObject.GetComponent<TextMeshProUGUI>();
 
         yield return new WaitForSeconds(1f);
-        async_operation = SceneManager.LoadSceneAsync(name);
+        async_operation = SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
 
-        while (!async_operation.isDone)
+        while (async_operation.progress < 0.9f)
         {
             progress = async_operation.progress;
             progress_bar.fillAmount = progress;
