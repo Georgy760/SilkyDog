@@ -39,6 +39,7 @@ public class DogControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log("TimeScale:" + Time.timeScale);
         distance += 0.1;
         if (distance % 200 == 0)
             generator.ChangeLocation();

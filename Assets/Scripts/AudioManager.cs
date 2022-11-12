@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] internal AudioSource effects_source;
     [SerializeField] private Sound[] sounds;
 
-    private bool first_enter = true;
+    [SerializeField] private bool first_enter = true;
     private GameObject main_canvas;
 
     [System.Serializable]
