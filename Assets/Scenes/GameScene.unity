@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f10bd4afa6534d49bbc400c97703fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 9
   objects_speed: 5
   jump_speed: 2
   coins_text: {fileID: 1846365208}

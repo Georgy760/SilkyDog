@@ -23,9 +23,6 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator AsyncLoading(string name)
     {   
-        Debug.Log("TimeScale-1:" + Time.timeScale);
-
-
         GameObject screen = Instantiate(load_screen, GameObject.FindObjectsOfType<Canvas>()[0].transform);
         progress_bar = screen.transform.Find("ProgressBar").Find("Fill").gameObject.GetComponent<Image>();
         progress_text = screen.transform.Find("ProgressBar").Find("ProgressText").gameObject.GetComponent<TextMeshProUGUI>();
@@ -33,11 +30,8 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(1);
         async_operation = SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
 
-        Debug.Log("TimeScale-2:" + Time.timeScale);
-
         while (!async_operation.isDone)
         {
-            Debug.Log("TimeScale-3:" + Time.timeScale);
             progress = async_operation.progress;
             progress_bar.fillAmount = progress;
             progress_text.text = (progress * 100f).ToString() + "%";

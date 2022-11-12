@@ -39,7 +39,6 @@ public class DogControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("TimeScale:" + Time.timeScale);
         distance += 0.1;
         if (distance % 200 == 0)
             generator.ChangeLocation();
@@ -50,7 +49,7 @@ public class DogControl : MonoBehaviour
     {
         metres_text.text = "Metres: " + distance.ToString();
         this.transform.rotation = new Quaternion(0, 0, 0, 1);
-        //this.transform.position = new Vector3(-4.48f, this.transform.position.y, this.transform.position.z);
+
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && is_grounded && coll_counts > 0) {
             is_grounded = false;
             rb.AddForce(transform.up * jump_speed * 100);
