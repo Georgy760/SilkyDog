@@ -6,20 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsManager : MonoBehaviour
 {
-    [SerializeField] private SceneLoader scene_loader;
+    private SceneLoader scene_loader;
 
     public void OnConnectClick()
     {
 
     }
 
-    public void OnPlayClick()
+    private void Start()
     {
-        //sync loading scene
-        //SceneManager.LoadScene("GameScene");
+        scene_loader = AudioManager.instance.gameObject.transform.Find("ScriptHandler").gameObject.GetComponent<SceneLoader>();
+    }
 
-        //async loading scene
-        scene_loader.LoadScene();
+    public void OnPlayClick(string scene_name)
+    {
+        scene_loader.LoadScene(scene_name);
     }
 
     public void OnLeaderBoardClick()

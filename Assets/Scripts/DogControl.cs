@@ -12,11 +12,11 @@ public class DogControl : MonoBehaviour
 
     [SerializeField] private float jump_speed = 1000;
 
-    [SerializeField] private Text coins_text;
+    [SerializeField] internal Text coins_text;
     [SerializeField] private Text metres_text;
-    [SerializeField] internal GameObject canvas_play;
-    [SerializeField] internal GameObject canvas_lose;
-    
+    [SerializeField] internal GameObject panel_play;
+    [SerializeField] internal GameObject panel_lose;
+
     internal int coins = 0;
 
     private Rigidbody2D rb;
@@ -33,7 +33,7 @@ public class DogControl : MonoBehaviour
 
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         generator = GameObject.FindObjectsOfType<Generator>()[0];
-
+        EventManager.eventOnCoinsCollect = null;
         EventManager.eventOnCoinsCollect += (int coins_num) => coins_text.text = coins_num.ToString();
     }
 
@@ -49,10 +49,11 @@ public class DogControl : MonoBehaviour
     {
         metres_text.text = "Metres: " + distance.ToString();
         this.transform.rotation = new Quaternion(0, 0, 0, 1);
-        //this.transform.position = new Vector3(-4.48f, this.transform.position.y, this.transform.position.z);
+
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && is_grounded && coll_counts > 0) {
             is_grounded = false;
             rb.AddForce(transform.up * jump_speed * 100);
+            AudioManager.instance.PlayOneShot(AudioManager.instance.GetSound("dog_jump"), SoundType.Effects);
         }
         else if (Input.GetKey(KeyCode.A)) {
             this.gameObject.transform.Translate(speed * Time.deltaTime * -1, 0, 0);
@@ -77,5 +78,10 @@ public class DogControl : MonoBehaviour
     private void OnCollisionExit2D(Collision2D col)
     {
         coll_counts--;
+    }
+
+    public void SetPause(bool pause)
+    {
+        Time.timeScale = pause ? 0 : 1;
     }
 }
