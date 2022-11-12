@@ -100,11 +100,14 @@ public class Generator : MonoBehaviour
         int n = Random.Range(current_obstacles_start, current_obstacles_end);
         GameObject obstacle = Instantiate(obstacles[n], obstacle_spawn_pos);
 
-        float pass_time = 5/GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed * 3 + 3;
-
-        yield return new WaitForSeconds(pass_time);
-
-        StartCoroutine(CreateObstacle());
+        if (GameObject.FindGameObjectsWithTag("Player").Length != 0) {
+            float pass_time = 5 / GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed * 3 + 3;
+            yield return new WaitForSeconds(pass_time);
+            StartCoroutine(CreateObstacle());
+        }
+        else {
+            yield break;
+        }
     }
 
     public void ChangeLocation()

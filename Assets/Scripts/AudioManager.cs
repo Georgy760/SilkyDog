@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+using UnityEngine.Video;
 
 public enum SoundType
 {
@@ -15,6 +17,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] internal AudioSource music_source;
     [SerializeField] internal AudioSource effects_source;
     [SerializeField] private Sound[] sounds;
+
+    private bool first_enter = true;
+    private GameObject main_canvas;
 
     [System.Serializable]
     public class Sound
@@ -73,6 +78,15 @@ public class AudioManager : MonoBehaviour
         }
         instance = this;
 
+        if (first_enter) {
+            first_enter = false;
+            main_canvas = GameObject.FindObjectsOfType<Canvas>()[0].gameObject;
+            main_canvas.SetActive(false);
+            VideoPlayer vp = Resources.FindObjectsOfTypeAll<VideoPlayer>()[0];
+            vp.gameObject.SetActive(true);
+            InvokeRepeating("checkOver", .1f, .1f);
+        }
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -130,4 +144,16 @@ public class AudioManager : MonoBehaviour
     }
 
     private void OnClick() => PlayOneShot(GetSound("button_click"), SoundType.Effects);
+
+    private void checkOver()
+    {
+        VideoPlayer VP = GameObject.FindObjectsOfType<VideoPlayer>()[0];
+        long playerCurrentFrame = VP.GetComponent<VideoPlayer>().frame;
+        long playerFrameCount = Convert.ToInt64(VP.GetComponent<VideoPlayer>().frameCount)-4;
+        if (playerCurrentFrame >= playerFrameCount) {
+            main_canvas.SetActive(true);
+            Destroy(VP.gameObject);
+            CancelInvoke("checkOver");
+        }
+    }
 }

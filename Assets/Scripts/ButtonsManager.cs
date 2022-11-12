@@ -24,6 +24,7 @@ public class ButtonsManager : MonoBehaviour
         //SceneManager.LoadScene("GameScene");
 
         //async loading scene
+        Time.timeScale = 1;
         scene_loader.LoadScene(scene_name);
     }
 

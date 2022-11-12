@@ -15,25 +15,26 @@ public class MovingObj : MonoBehaviour
 
     private void Awake()
     {
-        if (speed <= 0)
-            speed = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed;
+        if (GameObject.FindGameObjectsWithTag("Player").Length != 0) {
+            if (speed <= 0)
+                speed = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DogControl>().objects_speed;
+        }
     }
 
     private void FixedUpdate()
     {
-        Debug.Log("TimeScale:" + Time.timeScale.ToString());
         this.gameObject.transform.Translate(speed * Time.deltaTime * -1, 0, 0);
     }
     
     private void OnBecameInvisible()
     {
-        StartCoroutine(DestroyAfterInvis());
+        if (this.gameObject.activeInHierarchy)
+            StartCoroutine(DestroyAfterInvis());
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player") && is_killing) {
-            Debug.Log("Die");
             DogControl player = col.gameObject.GetComponent<DogControl>();
             player.panel_play.SetActive(false);
             player.panel_lose.SetActive(true);
