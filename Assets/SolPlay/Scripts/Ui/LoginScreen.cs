@@ -9,16 +9,12 @@ namespace SolPlay.Scripts.Ui
     {
         public Button PhantomLoginButton;
         public Button DevnetInGameWalletButton;
-        public Button YoutubeButton;
-        public Button RepositoryButton;
         public GameObject ConnectedRoot;
         public GameObject NotConnectedRoot;
         public GameObject TabBarRoot;
 
         private void Awake()
         {
-            YoutubeButton.onClick.AddListener(OnYoutubeButtonClicked);
-            RepositoryButton.onClick.AddListener(OnRepositoryButtonClicked);
             PhantomLoginButton.onClick.AddListener(OnPhantomButtonClicked);
             DevnetInGameWalletButton.onClick.AddListener(OnDevnetInGameWalletButtonClicked);
         }
