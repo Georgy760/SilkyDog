@@ -8,7 +8,6 @@ namespace SolPlay.Scripts.Ui
     public class LoginScreen : MonoBehaviour
     {
         public Button PhantomLoginButton;
-        public Button DevnetInGameWalletButton;
         public GameObject ConnectedRoot;
         public GameObject NotConnectedRoot;
         public GameObject TabBarRoot;
@@ -16,7 +15,7 @@ namespace SolPlay.Scripts.Ui
         private void Awake()
         {
             PhantomLoginButton.onClick.AddListener(OnPhantomButtonClicked);
-            DevnetInGameWalletButton.onClick.AddListener(OnDevnetInGameWalletButtonClicked);
+           
         }
 
         private void Start()

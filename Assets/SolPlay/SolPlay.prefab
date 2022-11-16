@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae66a7ebf51b46419724a9d3cc09d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EditorExampleWalletPublicKey: AFEkH2vF1CYGJnPncDw6PzaitjQgdQipL2hxSWLh9iDs
+  EditorExampleWalletPublicKey: 87RRu8B4J2nVkKnsSARDFLqAN119HBXvbaggftgMCefV
 --- !u!1 &1665109048261681710
 GameObject:
   m_ObjectHideFlags: 0
