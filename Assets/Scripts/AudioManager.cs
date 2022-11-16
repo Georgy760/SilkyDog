@@ -78,22 +78,10 @@ public class AudioManager : MonoBehaviour
         }
         instance = this;
 
-<<<<<<< HEAD
-/*        if (first_enter) {
-=======
-       /* if (first_enter) {
->>>>>>> a34708fa0e68d082e454bafe49ee68f61aab3712
-            first_enter = false;
-            main_canvas = GameObject.FindObjectsOfType<Canvas>()[0].gameObject;
-            main_canvas.SetActive(false);
-            VideoPlayer vp = Resources.FindObjectsOfTypeAll<VideoPlayer>()[0];
-            vp.gameObject.SetActive(true);
-            InvokeRepeating("checkOver", .1f, .1f);
-<<<<<<< HEAD
-=======
-       
->>>>>>> a34708fa0e68d082e454bafe49ee68f61aab3712
-        }*/
+
+        if (first_enter) {
+
+        }
 
         DontDestroyOnLoad(this.gameObject);
     }
