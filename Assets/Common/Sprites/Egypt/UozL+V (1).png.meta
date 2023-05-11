@@ -3,7 +3,7 @@ guid: 186f4f731c06c7845adfc9a0026d17bf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -444,20 +445,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UozL+V (1)_1: 1823079479
-      UozL+V (1)_8: -2142076575
-      UozL+V (1)_13: -1652026582
-      UozL+V (1)_11: -598833453
-      UozL+V (1)_3: -570071539
-      UozL+V (1)_6: 973923906
-      UozL+V (1)_4: 1314583883
       UozL+V (1)_0: 95268090
-      UozL+V (1)_7: -921841636
-      UozL+V (1)_5: 1775015108
-      UozL+V (1)_12: -689148986
-      UozL+V (1)_9: -767613686
-      UozL+V (1)_2: 1689235254
+      UozL+V (1)_1: 1823079479
       UozL+V (1)_10: 1344678702
+      UozL+V (1)_11: -598833453
+      UozL+V (1)_12: -689148986
+      UozL+V (1)_13: -1652026582
+      UozL+V (1)_2: 1689235254
+      UozL+V (1)_3: -570071539
+      UozL+V (1)_4: 1314583883
+      UozL+V (1)_5: 1775015108
+      UozL+V (1)_6: 973923906
+      UozL+V (1)_7: -921841636
+      UozL+V (1)_8: -2142076575
+      UozL+V (1)_9: -767613686
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
