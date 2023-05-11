@@ -1,2 +1,2 @@
 # SlikyDog
-CrytpoRunner
+CryptoRunner
