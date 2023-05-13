@@ -8,6 +8,7 @@ namespace Common.Scripts.ZenjectServices
     public class ControllerServiceInstaller : MonoInstaller
     {
         [SerializeField] private ControllerService controllerServicePrefab;
+        [SerializeField] private SessionService sessionServicePrefab;
         public override void InstallBindings()
         {
             InstallControlSheme();
@@ -19,6 +20,10 @@ namespace Common.Scripts.ZenjectServices
                 .Bind<IControllerService>()
                 .FromComponentInNewPrefab(controllerServicePrefab)
                 .UnderTransform(transform).AsSingle();
+            Container
+               .Bind<ISessionService>()
+               .FromComponentInNewPrefab(sessionServicePrefab)
+               .UnderTransform(transform).AsSingle();
         }
     }
 }

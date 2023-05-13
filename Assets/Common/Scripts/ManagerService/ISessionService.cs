@@ -4,8 +4,8 @@ namespace Common.Scripts.ManagerService
 {
     public interface ISessionService
     {
-        event Action StartRun;
-        event Action EndRun;
+        event Action OnStartRun;
+        event Action OnEndRun;
         int record { get; set; }
         int money { get; set; }
     }
