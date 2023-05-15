@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Common.Scripts.ManagerService
 {
@@ -8,5 +9,9 @@ namespace Common.Scripts.ManagerService
         event Action OnEndRun;
         int record { get; set; }
         int money { get; set; }
+
+        LevelType levelType {get; set; }
+
+        List<ObstaclesScritableObjects> obstacles { get; set; }
     }
 }

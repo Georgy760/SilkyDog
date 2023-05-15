@@ -11,10 +11,10 @@ namespace Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float _deltaX = 5f;
-        [SerializeField] private float _deltaY = 5f;
         [SerializeField] private float _speed = 1f;
-        [SerializeField] private float _jumpForce = 5f;
-        [SerializeField] private float _airTime = 2f;
+        [SerializeField] private float _duratation = 1f;
+        [SerializeField] private AnimationCurve _curveDeltay;
+        [SerializeField] private LayerMask _layerGround;
         private bool _isJump = false;
         private IControllerService _controllerService;
         private ISessionService _sessionService;
@@ -35,21 +35,17 @@ namespace Player
                 StopCoroutine(StartRun());
                 //StartCoroutine(EndR)
             };
+            
         }
 
         private IEnumerator StartRun()
         {
             while (true)
             {
-                float NewY = transform.position.y;
-                float NewX = Mathf.Clamp(transform.position.x + _deltaX * Time.deltaTime, transform.position.x, transform.position.x + _speed);
+                float NewX = Mathf.Clamp(_speed * Time.deltaTime, _deltaX * Time.deltaTime, _deltaX + _speed * Time.deltaTime);
+                transform.position += new Vector3(NewX, 0,0);
 
-                if(_isJump)
-                   NewY = Mathf.Clamp(transform.position.y + _deltaY * Time.deltaTime,transform.position.y, transform.position.y + _speed);
-
-                transform.position = new Vector2(NewX, NewY);
-
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForFixedUpdate();
             }
             yield return null;
         }
@@ -62,16 +58,34 @@ namespace Player
             }
             yield return null;
         }
+
+        private bool IsGrounded()
+        {
+            // Выполняем BoxCast вниз, чтобы проверить столкновение с коллайдером земли
+            RaycastHit2D hit = Physics2D.BoxCast(transform.position, transform.localScale, 0f, Vector2.down, .1f, _layerGround.value);
+
+            return hit.collider != null;
+        }
         private IEnumerator Jump()
         {
-            if (!_isJump)
+           
+            if (IsGrounded() && !_isJump)
             {
                 _isJump = true;
-                _deltaY += _jumpForce;
-                yield return new WaitForSeconds(_airTime);
+                float expiredTime = 0f;
+                float progress = 0f;
+                Vector2 startPos = transform.position;
+                while (progress < 1f)
+                {
+                    expiredTime += Time.deltaTime;
+                    progress = expiredTime / _duratation;
+
+                    transform.position += new Vector3(0, startPos.y + _curveDeltay.Evaluate(progress), 0);
+                    yield return new WaitForFixedUpdate();
+                }
                 _isJump = false;
-                _deltaY = 0f;
             }
+            
             yield return null;
         }
     }

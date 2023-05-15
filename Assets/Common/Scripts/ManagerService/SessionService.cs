@@ -12,6 +12,9 @@ namespace Common.Scripts.ManagerService
         public int record { get => record; set => record = value; }
         public int money { get => money; set => money = value; }
 
+        public LevelType levelType { get => levelType; set => levelType = value; }
+        public List<ObstaclesScritableObjects> obstacles { get => obstacles; set => obstacles = value; }
+
         public event Action OnStartRun;
         public event Action OnEndRun;
 
