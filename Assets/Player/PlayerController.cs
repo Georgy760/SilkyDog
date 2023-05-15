@@ -80,7 +80,7 @@ namespace Player
                     expiredTime += Time.deltaTime;
                     progress = expiredTime / _duratation;
 
-                    transform.position += new Vector3(0, startPos.y + _curveDeltay.Evaluate(progress), 0);
+                    transform.position = new Vector3(transform.position.x, startPos.y + _curveDeltay.Evaluate(progress), transform.position.z);
                     yield return new WaitForFixedUpdate();
                 }
                 _isJump = false;

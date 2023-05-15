@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c07f8d46a91364eaf147c6ceb5cfdf, type: 3}
+  m_Name: Egypt
+  m_EditorClassIdentifier: 
+  obstaclesObjects:
+  - {fileID: 3030370186451329032, guid: 71b637ff0466d9f44996eed41890ad11, type: 3}
+  - {fileID: 4870093382555590134, guid: 6544fdc0351d763478bd811fbd6bb7e6, type: 3}
+  - {fileID: 6775112564558800985, guid: b89d3aa0c1d98654fb194bc21b3790a3, type: 3}
+  - {fileID: 1628885717855684384, guid: 44e02d3fd0605ad44b8138f51eea86a4, type: 3}
+  - {fileID: 8473873840529261036, guid: b891131d31846df44a93e34cbfa0941e, type: 3}
+  levelType: 3

@@ -93,7 +93,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2668709408470165445, guid: 5dc34a79c4595f54ea49cbdb4a80c9eb, type: 3}
       propertyPath: m_Name
-      value: Platform_1_india
+      value: Platform_1_india Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2668709408470165465, guid: 5dc34a79c4595f54ea49cbdb4a80c9eb, type: 3}
       propertyPath: m_RootOrder
@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2668709408470165465, guid: 5dc34a79c4595f54ea49cbdb4a80c9eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.06474
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2668709408470165465, guid: 5dc34a79c4595f54ea49cbdb4a80c9eb, type: 3}
       propertyPath: m_LocalPosition.z

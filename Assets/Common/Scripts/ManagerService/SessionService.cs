@@ -9,11 +9,14 @@ namespace Common.Scripts.ManagerService
 {
     public class SessionService : MonoBehaviour, ISessionService
     {
-        public int record { get => record; set => record = value; }
-        public int money { get => money; set => money = value; }
+        public int record { get; set; }
+        public int money { get; set; }
 
-        public LevelType levelType { get => levelType; set => levelType = value; }
-        public List<ObstaclesScritableObjects> obstacles { get => obstacles; set => obstacles = value; }
+        [SerializeField] private LevelType _levelType;
+        public LevelType levelType { get => _levelType; set => _levelType = value; }
+
+        [SerializeField] private List<ObstaclesScritableObjects> _obstacles = new List<ObstaclesScritableObjects>();
+        public List<ObstaclesScritableObjects> obstacles { get => _obstacles; set => _obstacles = value; }
 
         public event Action OnStartRun;
         public event Action OnEndRun;

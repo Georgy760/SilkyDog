@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854099538868783620, guid: ebb23138736170643ac3420eb697463e, type: 3}
       propertyPath: m_Name
-      value: Platform_2_india
+      value: Platform_2_india Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8854099538868783640, guid: ebb23138736170643ac3420eb697463e, type: 3}
       propertyPath: m_RootOrder
@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854099538868783640, guid: ebb23138736170643ac3420eb697463e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.06474
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8854099538868783640, guid: ebb23138736170643ac3420eb697463e, type: 3}
       propertyPath: m_LocalPosition.z

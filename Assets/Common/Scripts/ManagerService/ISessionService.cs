@@ -10,7 +10,7 @@ namespace Common.Scripts.ManagerService
         int record { get; set; }
         int money { get; set; }
 
-        LevelType levelType {get; set; }
+        LevelType levelType { get; set; }
 
         List<ObstaclesScritableObjects> obstacles { get; set; }
     }

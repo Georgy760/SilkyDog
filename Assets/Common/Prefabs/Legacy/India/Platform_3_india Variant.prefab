@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8817973341821197935, guid: 5e6866d547276394882c315f80065984, type: 3}
       propertyPath: m_Name
-      value: Platform_3_india
+      value: Platform_3_india Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8817973341821197939, guid: 5e6866d547276394882c315f80065984, type: 3}
       propertyPath: m_RootOrder
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8817973341821197939, guid: 5e6866d547276394882c315f80065984, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.06474
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8817973341821197939, guid: 5e6866d547276394882c315f80065984, type: 3}
       propertyPath: m_LocalPosition.z
