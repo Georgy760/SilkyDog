@@ -7,7 +7,6 @@ namespace Common.Infrastructure
     public class PlayerInputServiceInstaller : MonoInstaller
     {
         [SerializeField] private PlayerInputService playerInputServicePrefab;
-        [SerializeField] private SessionService sessionServicePrefab;
         public override void InstallBindings()
         {
             InstallControlSheme();
@@ -19,10 +18,6 @@ namespace Common.Infrastructure
                 .Bind<IPlayerInputService>()
                 .FromComponentInNewPrefab(playerInputServicePrefab)
                 .UnderTransform(transform).AsSingle();
-            Container
-               .Bind<ISessionService>()
-               .FromComponentInNewPrefab(sessionServicePrefab)
-               .UnderTransform(transform).AsSingle();
         }
     }
 }

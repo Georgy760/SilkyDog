@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Scripts.UserData;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -16,9 +17,8 @@ namespace Common.GameManager.Scripts.Menu
         [SerializeField] private TMPro.TMP_Text _text;
         [SerializeField] private Button RestartButton;
         [SerializeField] private Button QuitButton;
-
+        
         private IGameManager _gameManager;
-
         [Inject]
         private void Construct(IGameManager gameManager)
         {
@@ -34,6 +34,7 @@ namespace Common.GameManager.Scripts.Menu
             QuitButton.onClick.RemoveListener(HandleQuitClick);
             RestartButton.onClick.RemoveListener(HandleRestartClick);
         } 
+        
         private void HandleGameStateChanged(GameState currentState, GameState previousState)
         {
             switch (currentState)
