@@ -10,6 +10,7 @@ namespace Common.GameManager.Scripts
         void QuitLevel();
         void QuitGame();
         void RestartGame();
+        void ResultLevel();
         void StartGame();
         void HandleMainMenuFadeComplete(bool fadeIn);
         void ToggleSettings();

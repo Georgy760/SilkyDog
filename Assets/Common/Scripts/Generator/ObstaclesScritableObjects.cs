@@ -9,4 +9,7 @@ public class ObstaclesScritableObjects : ScriptableObject
 {
     public List<GameObject> obstaclesObjects = new List<GameObject>();
     public LevelType levelType;
+    public Sprite BackGround;
+    public Sprite Floor;
+    public Texture2D BackImage;
 }

@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939541021708212662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.73, y: -1.1647736, z: 3.1310465}
+  m_LocalPosition: {x: -0.73, y: 0.35, z: 3.1310465}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -124,8 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f90b3d622f073b44b87eb567ccae520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  is_killing: 0
 --- !u!1 &2734170432854635198
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,8 +150,8 @@ Transform:
   m_GameObject: {fileID: 2734170432854635198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.117576, y: -0.111842066, z: -3.1310465}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 611424243877609252}
   - {fileID: 9027164402950145703}
@@ -410,7 +408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8042196163400320528}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.61, y: -1.7262237, z: 0.090168715}
+  m_LocalPosition: {x: -0.61, y: 0, z: 0.090168715}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -434,8 +432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c3d633ae397db4a9c6f5390518a466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  is_killing: 1
 --- !u!61 &8042196163400320534
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1126,7 +1122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9027164402950145699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.4475756, y: -1.7375104, z: 0.090168715}
+  m_LocalPosition: {x: -4.4475756, y: 0, z: 0.090168715}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1150,8 +1146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c3d633ae397db4a9c6f5390518a466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  is_killing: 1
 --- !u!61 &9027164402950145701
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1445,7 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2522016606942128164, guid: 1a6eee885bc91d84e825e42ab2362f5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7427534
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522016606942128164, guid: 1a6eee885bc91d84e825e42ab2362f5c, type: 3}
       propertyPath: m_LocalPosition.z

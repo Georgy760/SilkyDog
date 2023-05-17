@@ -20,20 +20,20 @@ namespace Common.Scripts.ManagerService
 
         public event Action OnStartRun;
         public event Action OnEndRun;
+        public event Action OnRestartSession;
 
-        private void Start()
-        {
-            StartGame();
-        }
-        void StartGame()
+        public void StartGame()
         {
             OnStartRun?.Invoke();
         }
 
-        void EndRun()
+        public void EndRun()
         {
             OnEndRun?.Invoke();
         }
-
+        public void RestartGame()
+        {
+            OnRestartSession?.Invoke();
+        }
     }
 }

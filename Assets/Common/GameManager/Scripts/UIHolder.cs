@@ -8,6 +8,7 @@ namespace Common.GameManager.Scripts
         [SerializeField] private GameObject _mainMenu;
         [SerializeField] private GameObject _pauseMenu;
         [SerializeField] private GameObject _settingsMenu;
+        [SerializeField] private GameObject _ResultMenu;
         private IGameManager _gameManager;
 
         [Inject]

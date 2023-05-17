@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Common.Scripts.Legacy;
+using Common.Scripts.ManagerService;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Common.GameManager.Scripts
 {
@@ -16,6 +19,9 @@ namespace Common.GameManager.Scripts
         private List<AsyncOperation> _loadOperations;
         private GameState CurrentGameState { get; set; } = GameState.PREGAME;
         private PlayerActions _playerActions;
+      
+
+
         private void Awake()
         {
             _currentLevelName = SceneManager.GetActiveScene().name;
@@ -25,6 +31,7 @@ namespace Common.GameManager.Scripts
             _playerActions.Menu.EscTap.performed += EscTap;
             OnMainMenuFadeComplete += HandleMainMenuFadeComplete;
             OnGameStateChanged?.Invoke(GameState.PREGAME, CurrentGameState);
+            MovingObj.OnDeath += ResultLevel;
         }
         
         private void Start()
@@ -58,7 +65,11 @@ namespace Common.GameManager.Scripts
         }
         public void RestartGame()
         {
-            //TODO AddRestartFeature
+            UpdateState(GameState.STARTRUNNING);
+        }
+        public void ResultLevel()
+        {
+            UpdateState(GameState.RESULT);
         }
         public void QuitLevel()
         {
@@ -109,8 +120,14 @@ namespace Common.GameManager.Scripts
                     //  Unlock player, enemies and input in other systems, update tick if you are managing time
                     Time.timeScale = 1.0f;
                     break;
-
+                case GameState.STARTRUNNING:
+                    Time.timeScale = 1.0f;
+                    break;
                 case GameState.PAUSED:
+                    // Pause player, enemies etc, Lock other input in other systems
+                    Time.timeScale = 0.0f;
+                    break;
+                case GameState.RESULT:
                     // Pause player, enemies etc, Lock other input in other systems
                     Time.timeScale = 0.0f;
                     break;

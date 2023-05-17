@@ -7,6 +7,7 @@ namespace Common.Scripts.ManagerService
     {
         event Action OnStartRun;
         event Action OnEndRun;
+        event Action OnRestartSession;
         int record { get; set; }
         int money { get; set; }
 

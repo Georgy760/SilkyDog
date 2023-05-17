@@ -18,7 +18,9 @@ namespace Player
         private bool _isJump = false;
         private IPlayerInputService _playerInputService;
         private ISessionService _sessionService;
-
+        private float _ofssetYCollider;
+        private Vector3 _StartPos;
+        private bool _stop = true;
         [Inject]
         void Construct(IPlayerInputService playerInputService, ISessionService sessionService)
         {
@@ -29,18 +31,28 @@ namespace Player
             _playerInputService.OnButtonLeftPress += () => _deltaX -= _speed;
             _playerInputService.OnButtonLeftRelease += () => _deltaX += _speed;
             _sessionService = sessionService;
-            _sessionService.OnStartRun += () => StartCoroutine(StartRun());
+            _sessionService.OnStartRun += () =>
+            {
+                _stop = true;
+                StartCoroutine(StartRun());
+            };
+            _sessionService.OnRestartSession += RestartPlayer;
             _sessionService.OnEndRun += () =>
             {
-                StopCoroutine(StartRun());
-                //StartCoroutine(EndR)
+                _stop = false;
             };
+            _ofssetYCollider = GetComponent<BoxCollider2D>().size.y / 2f;
+            _StartPos = transform.position;
             
         }
 
+        private void RestartPlayer()
+        {
+            transform.position = _StartPos;
+        }
         private IEnumerator StartRun()
         {
-            while (true)
+            while (_stop)
             {
                 float NewX = Mathf.Clamp(_speed * Time.deltaTime, _deltaX * Time.deltaTime, _deltaX + _speed * Time.deltaTime);
                 transform.position += new Vector3(NewX, 0,0);
@@ -62,7 +74,7 @@ namespace Player
         private bool IsGrounded()
         {
             // ��������� BoxCast ����, ����� ��������� ������������ � ����������� �����
-            RaycastHit2D hit = Physics2D.BoxCast(transform.position, transform.localScale, 0f, Vector2.down, .1f, _layerGround.value);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _ofssetYCollider, _layerGround);
 
             return hit.collider != null;
         }

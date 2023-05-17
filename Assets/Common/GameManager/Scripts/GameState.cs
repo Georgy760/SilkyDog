@@ -4,6 +4,8 @@
     {
         PREGAME,
         RUNNING,
-        PAUSED
+        PAUSED,
+        RESULT,
+        STARTRUNNING
     }
 }

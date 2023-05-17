@@ -25,9 +25,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3030370186451329032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.72164, y: -1.5182794, z: -0.005531417}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 24.72164, y: 0, z: -0.005531417}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6860337446538685158}
   - {fileID: 1263335721158101680}
@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4289199825972432097, guid: d91fdccab7dba63428b6635406891964, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7735323
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 4289199825972432097, guid: d91fdccab7dba63428b6635406891964, type: 3}
       propertyPath: m_LocalPosition.z
@@ -312,7 +312,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform_egypt
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8827401633823245408, guid: d91fdccab7dba63428b6635406891964, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d91fdccab7dba63428b6635406891964, type: 3}
 --- !u!4 &1263335721158101680 stripped
 Transform:
@@ -336,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4289199825972432097, guid: d91fdccab7dba63428b6635406891964, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.50036097
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4289199825972432097, guid: d91fdccab7dba63428b6635406891964, type: 3}
       propertyPath: m_LocalPosition.z
@@ -374,7 +375,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform_egypt (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8827401633823245408, guid: d91fdccab7dba63428b6635406891964, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d91fdccab7dba63428b6635406891964, type: 3}
 --- !u!4 &1263335720988778133 stripped
 Transform:
@@ -433,7 +435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8447302843541597327, guid: 26b810dc7d993b34185e318dbceb5339, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1938932
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 8447302843541597327, guid: 26b810dc7d993b34185e318dbceb5339, type: 3}
       propertyPath: m_LocalPosition.z
@@ -491,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4289199825972432097, guid: d91fdccab7dba63428b6635406891964, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.77
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 4289199825972432097, guid: d91fdccab7dba63428b6635406891964, type: 3}
       propertyPath: m_LocalPosition.z
@@ -529,7 +531,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform_egypt (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8827401633823245408, guid: d91fdccab7dba63428b6635406891964, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d91fdccab7dba63428b6635406891964, type: 3}
 --- !u!4 &1263335722008599914 stripped
 Transform:
@@ -588,7 +591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8447302843541597327, guid: 26b810dc7d993b34185e318dbceb5339, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.08
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 8447302843541597327, guid: 26b810dc7d993b34185e318dbceb5339, type: 3}
       propertyPath: m_LocalPosition.z

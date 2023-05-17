@@ -1,15 +1,22 @@
-﻿using System;
+﻿using Common.Scripts.ManagerService;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
 namespace Common.GameManager.Scripts.Menu
 {
-    public class PauseMenu : MonoBehaviour
+    public class ResultMenu : MonoBehaviour
     {
-        [SerializeField] private Button ResumeButton;
-        [SerializeField] private Button QuitButton;
+
+        [SerializeField] private TMPro.TMP_Text _text;
         [SerializeField] private Button RestartButton;
+        [SerializeField] private Button QuitButton;
+
         private IGameManager _gameManager;
 
         [Inject]
@@ -17,7 +24,6 @@ namespace Common.GameManager.Scripts.Menu
         {
             _gameManager = gameManager;
             _gameManager.OnGameStateChanged += HandleGameStateChanged;
-            ResumeButton.onClick.AddListener(HandleResumeClick);
             QuitButton.onClick.AddListener(HandleQuitClick);
             RestartButton.onClick.AddListener(HandleRestartClick);
         }
@@ -25,16 +31,14 @@ namespace Common.GameManager.Scripts.Menu
         private void OnDestroy()
         {
             _gameManager.OnGameStateChanged -= HandleGameStateChanged;
-            ResumeButton.onClick.RemoveListener(HandleResumeClick);
             QuitButton.onClick.RemoveListener(HandleQuitClick);
             RestartButton.onClick.RemoveListener(HandleRestartClick);
-        }
-
+        } 
         private void HandleGameStateChanged(GameState currentState, GameState previousState)
         {
             switch (currentState)
             {
-                case GameState.PAUSED:
+                case GameState.RESULT:
                     gameObject.SetActive(true);
                     break;
 
@@ -43,11 +47,7 @@ namespace Common.GameManager.Scripts.Menu
                     break;
             }
         }
-
-        private void HandleResumeClick()
-        {
-            _gameManager.TogglePause();
-        }
+         
 
         private void HandleQuitClick()
         {
@@ -58,5 +58,6 @@ namespace Common.GameManager.Scripts.Menu
         {
             _gameManager.RestartGame();
         }
+
     }
 }
