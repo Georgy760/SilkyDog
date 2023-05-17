@@ -2,6 +2,7 @@
 using Common.Scripts.ManagerService;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -14,6 +15,7 @@ namespace Common.Scripts.Generator
         [SerializeField] private Image _sprite;
         [SerializeField] GameObject _prevsObstacle;
         [SerializeField] private RawImage _movingBack;
+        [SerializeField] private Transform _parentObstacles;
         private LevelType _curretLevel;
         private Dictionary<LevelType, List<GameObject>> _countryObstaclesPrefab = new Dictionary<LevelType, List<GameObject>>();
         private Dictionary<LevelType, Sprite> _countryBackGround = new Dictionary<LevelType, Sprite>();
@@ -25,15 +27,19 @@ namespace Common.Scripts.Generator
         private float _offesetY;
         private int _curretPlatform = 0;
         private int _counterPlatforms = 0;
+        private bool _isStop = true;
+        
 
         IGameManager _manager;
+        ISessionService _service;
         [Inject]
         void Constructor(ISessionService service, IGameManager manager)
         {
+            _service = service;
             _curretLevel = service.levelType;
-            service.OnRestartSession += RestartGeneration;
-            service.OnStartRun += () => StartCoroutine(StartGeneration());
-
+            _service.OnRestartSession += RestartGeneration;
+            _service.OnStartRun += StartLevel;
+            _service.OnEndRun += EndLevel;
             foreach (ObstaclesScritableObjects obstacles in service.obstacles)
             {
                 _countryObstaclesPrefab.Add(obstacles.levelType, obstacles.obstaclesObjects);
@@ -46,7 +52,25 @@ namespace Common.Scripts.Generator
             _manager.OnFadeCompleteLevelChange += StartLevelChange;
             ChangeCountry(_curretLevel); 
         }
+        private void OnDestroy()
+        {
+            _service.OnRestartSession -= RestartGeneration;
+            _service.OnStartRun -= StartLevel;
+            _service.OnEndRun -= EndLevel;
+            TriggerForReplaceFloor.OnTriggerToReplace -= ReplacePlatform;
+        }
 
+        private void StartLevel()
+        {
+            _isStop = true;
+            StartCoroutine(StartGeneration());
+        }
+
+        private void EndLevel()
+        {
+            _isStop = false;
+            Destroy(_prevsObstacle);
+        }
         private void StartLevelChange(bool isChange)
         {
             if(isChange)
@@ -93,13 +117,13 @@ namespace Common.Scripts.Generator
         }
         private IEnumerator StartGeneration()
         {
-            while (true)
+            while (_isStop)
             {
                 if (_counterPlatforms == 2)
                 {
                     Destroy(_prevsObstacle.gameObject);
                     GameObject obstacles = _countryObstaclesPrefab[_curretLevel][Random.Range(0, _countryObstaclesPrefab[_curretLevel].Count - 1)];
-                    _prevsObstacle = Instantiate(obstacles, _platforms[_curretPlatform].transform.position + new Vector3(0f, _offesetY * 0.8f, 0f), Quaternion.identity);
+                    _prevsObstacle = Instantiate(obstacles, _platforms[_curretPlatform].transform.position + new Vector3(0f, _offesetY * 0.8f, 0f), Quaternion.identity, _parentObstacles);
                     _counterPlatforms = 0;
                 }
                 yield return new WaitForEndOfFrame();
