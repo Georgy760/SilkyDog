@@ -24,7 +24,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     ""name"": ""PlayerActions"",
     ""maps"": [
         {
-            ""name"": ""Keyboard"",
+            ""name"": ""Play"",
             ""id"": ""8857583a-2809-4ad8-a00e-ad4db0997474"",
             ""actions"": [
                 {
@@ -67,6 +67,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""name"": ""SpaceTap"",
                     ""type"": ""Button"",
                     ""id"": ""3fb4eaff-6db6-4f46-bc6f-87b81c2e164a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EscTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c113ea3-ed27-49d1-a1cc-a590b49efeb0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -172,19 +181,126 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""RightRelease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4686d963-aa72-48b9-9c31-3d46dc9eecee"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EscTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""70f4aa3c-5431-422a-9188-56d5bab5b2bc"",
+            ""actions"": [
+                {
+                    ""name"": ""EscTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""23db34f0-55ca-4d09-8772-0b3250a01300"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UpTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea3b30c6-733a-49ea-97f7-6e0bf7cd0525"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DownTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""79f09d66-e1a7-47c3-a926-aaaf66fa86b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ad5d9ee5-92df-4253-8280-ac9461d7f2ac"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EscTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d02da212-482c-420d-ab46-9c41a494251b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7b2e098-41d6-4500-a299-6d5f29c63adb"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""007a029f-68c8-4b29-a527-d34945547658"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0fa87de-69bb-4875-b96a-49e93ef30336"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Keyboard
-        m_Keyboard = asset.FindActionMap("Keyboard", throwIfNotFound: true);
-        m_Keyboard_LeftPress = m_Keyboard.FindAction("LeftPress", throwIfNotFound: true);
-        m_Keyboard_LeftRelease = m_Keyboard.FindAction("LeftRelease", throwIfNotFound: true);
-        m_Keyboard_RightPress = m_Keyboard.FindAction("RightPress", throwIfNotFound: true);
-        m_Keyboard_RightRelease = m_Keyboard.FindAction("RightRelease", throwIfNotFound: true);
-        m_Keyboard_SpaceTap = m_Keyboard.FindAction("SpaceTap", throwIfNotFound: true);
+        // Play
+        m_Play = asset.FindActionMap("Play", throwIfNotFound: true);
+        m_Play_LeftPress = m_Play.FindAction("LeftPress", throwIfNotFound: true);
+        m_Play_LeftRelease = m_Play.FindAction("LeftRelease", throwIfNotFound: true);
+        m_Play_RightPress = m_Play.FindAction("RightPress", throwIfNotFound: true);
+        m_Play_RightRelease = m_Play.FindAction("RightRelease", throwIfNotFound: true);
+        m_Play_SpaceTap = m_Play.FindAction("SpaceTap", throwIfNotFound: true);
+        m_Play_EscTap = m_Play.FindAction("EscTap", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_EscTap = m_Menu.FindAction("EscTap", throwIfNotFound: true);
+        m_Menu_UpTap = m_Menu.FindAction("UpTap", throwIfNotFound: true);
+        m_Menu_DownTap = m_Menu.FindAction("DownTap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -243,32 +359,34 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Keyboard
-    private readonly InputActionMap m_Keyboard;
-    private List<IKeyboardActions> m_KeyboardActionsCallbackInterfaces = new List<IKeyboardActions>();
-    private readonly InputAction m_Keyboard_LeftPress;
-    private readonly InputAction m_Keyboard_LeftRelease;
-    private readonly InputAction m_Keyboard_RightPress;
-    private readonly InputAction m_Keyboard_RightRelease;
-    private readonly InputAction m_Keyboard_SpaceTap;
-    public struct KeyboardActions
+    // Play
+    private readonly InputActionMap m_Play;
+    private List<IPlayActions> m_PlayActionsCallbackInterfaces = new List<IPlayActions>();
+    private readonly InputAction m_Play_LeftPress;
+    private readonly InputAction m_Play_LeftRelease;
+    private readonly InputAction m_Play_RightPress;
+    private readonly InputAction m_Play_RightRelease;
+    private readonly InputAction m_Play_SpaceTap;
+    private readonly InputAction m_Play_EscTap;
+    public struct PlayActions
     {
         private @PlayerActions m_Wrapper;
-        public KeyboardActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LeftPress => m_Wrapper.m_Keyboard_LeftPress;
-        public InputAction @LeftRelease => m_Wrapper.m_Keyboard_LeftRelease;
-        public InputAction @RightPress => m_Wrapper.m_Keyboard_RightPress;
-        public InputAction @RightRelease => m_Wrapper.m_Keyboard_RightRelease;
-        public InputAction @SpaceTap => m_Wrapper.m_Keyboard_SpaceTap;
-        public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
+        public PlayActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftPress => m_Wrapper.m_Play_LeftPress;
+        public InputAction @LeftRelease => m_Wrapper.m_Play_LeftRelease;
+        public InputAction @RightPress => m_Wrapper.m_Play_RightPress;
+        public InputAction @RightRelease => m_Wrapper.m_Play_RightRelease;
+        public InputAction @SpaceTap => m_Wrapper.m_Play_SpaceTap;
+        public InputAction @EscTap => m_Wrapper.m_Play_EscTap;
+        public InputActionMap Get() { return m_Wrapper.m_Play; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(KeyboardActions set) { return set.Get(); }
-        public void AddCallbacks(IKeyboardActions instance)
+        public static implicit operator InputActionMap(PlayActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayActions instance)
         {
-            if (instance == null || m_Wrapper.m_KeyboardActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_KeyboardActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayActionsCallbackInterfaces.Add(instance);
             @LeftPress.started += instance.OnLeftPress;
             @LeftPress.performed += instance.OnLeftPress;
             @LeftPress.canceled += instance.OnLeftPress;
@@ -284,9 +402,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @SpaceTap.started += instance.OnSpaceTap;
             @SpaceTap.performed += instance.OnSpaceTap;
             @SpaceTap.canceled += instance.OnSpaceTap;
+            @EscTap.started += instance.OnEscTap;
+            @EscTap.performed += instance.OnEscTap;
+            @EscTap.canceled += instance.OnEscTap;
         }
 
-        private void UnregisterCallbacks(IKeyboardActions instance)
+        private void UnregisterCallbacks(IPlayActions instance)
         {
             @LeftPress.started -= instance.OnLeftPress;
             @LeftPress.performed -= instance.OnLeftPress;
@@ -303,29 +424,101 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @SpaceTap.started -= instance.OnSpaceTap;
             @SpaceTap.performed -= instance.OnSpaceTap;
             @SpaceTap.canceled -= instance.OnSpaceTap;
+            @EscTap.started -= instance.OnEscTap;
+            @EscTap.performed -= instance.OnEscTap;
+            @EscTap.canceled -= instance.OnEscTap;
         }
 
-        public void RemoveCallbacks(IKeyboardActions instance)
+        public void RemoveCallbacks(IPlayActions instance)
         {
-            if (m_Wrapper.m_KeyboardActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IKeyboardActions instance)
+        public void SetCallbacks(IPlayActions instance)
         {
-            foreach (var item in m_Wrapper.m_KeyboardActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_KeyboardActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public KeyboardActions @Keyboard => new KeyboardActions(this);
-    public interface IKeyboardActions
+    public PlayActions @Play => new PlayActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
+    private readonly InputAction m_Menu_EscTap;
+    private readonly InputAction m_Menu_UpTap;
+    private readonly InputAction m_Menu_DownTap;
+    public struct MenuActions
+    {
+        private @PlayerActions m_Wrapper;
+        public MenuActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @EscTap => m_Wrapper.m_Menu_EscTap;
+        public InputAction @UpTap => m_Wrapper.m_Menu_UpTap;
+        public InputAction @DownTap => m_Wrapper.m_Menu_DownTap;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void AddCallbacks(IMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
+            @EscTap.started += instance.OnEscTap;
+            @EscTap.performed += instance.OnEscTap;
+            @EscTap.canceled += instance.OnEscTap;
+            @UpTap.started += instance.OnUpTap;
+            @UpTap.performed += instance.OnUpTap;
+            @UpTap.canceled += instance.OnUpTap;
+            @DownTap.started += instance.OnDownTap;
+            @DownTap.performed += instance.OnDownTap;
+            @DownTap.canceled += instance.OnDownTap;
+        }
+
+        private void UnregisterCallbacks(IMenuActions instance)
+        {
+            @EscTap.started -= instance.OnEscTap;
+            @EscTap.performed -= instance.OnEscTap;
+            @EscTap.canceled -= instance.OnEscTap;
+            @UpTap.started -= instance.OnUpTap;
+            @UpTap.performed -= instance.OnUpTap;
+            @UpTap.canceled -= instance.OnUpTap;
+            @DownTap.started -= instance.OnDownTap;
+            @DownTap.performed -= instance.OnDownTap;
+            @DownTap.canceled -= instance.OnDownTap;
+        }
+
+        public void RemoveCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
+    public interface IPlayActions
     {
         void OnLeftPress(InputAction.CallbackContext context);
         void OnLeftRelease(InputAction.CallbackContext context);
         void OnRightPress(InputAction.CallbackContext context);
         void OnRightRelease(InputAction.CallbackContext context);
         void OnSpaceTap(InputAction.CallbackContext context);
+        void OnEscTap(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnEscTap(InputAction.CallbackContext context);
+        void OnUpTap(InputAction.CallbackContext context);
+        void OnDownTap(InputAction.CallbackContext context);
     }
 }

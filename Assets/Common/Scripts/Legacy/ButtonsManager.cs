@@ -1,40 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class ButtonsManager : MonoBehaviour
+namespace Common.Scripts.Legacy
 {
-    private SceneLoader scene_loader;
-
-    public void OnConnectClick()
+    public class ButtonsManager : MonoBehaviour
     {
+        private SceneLoader scene_loader;
 
-    }
+        public void OnConnectClick()
+        {
 
-    private void Start()
-    {
-        scene_loader = AudioManager.instance.gameObject.transform.Find("ScriptHandler").gameObject.GetComponent<SceneLoader>();
-    }
+        }
 
-    public void OnPlayClick(string scene_name)
-    {
-        scene_loader.LoadScene(scene_name);
-    }
+        private void Start()
+        {
+            scene_loader = AudioManager.instance.gameObject.transform.Find("ScriptHandler").gameObject.GetComponent<SceneLoader>();
+        }
 
-    public void OnLeaderBoardClick()
-    {
+        public void OnPlayClick(string scene_name)
+        {
+            scene_loader.LoadScene(scene_name);
+        }
 
-    }
+        public void OnLeaderBoardClick()
+        {
 
-    public void OnSettingsClick()
-    {
+        }
+
+        public void OnSettingsClick()
+        {
         
-    }
+        }
 
-    public void OnBackClick()
-    {
+        public void OnBackClick()
+        {
 
+        }
     }
 }

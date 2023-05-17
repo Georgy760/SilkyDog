@@ -1,13 +1,14 @@
 using System;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public static class EventManager
+namespace Common.Scripts.Legacy
 {
-    internal static Action<int> eventOnCoinsCollect;
-
-    public static void CallOnCoinsUpdate(int coins_num)
+    public static class EventManager
     {
-        eventOnCoinsCollect?.Invoke(coins_num);
+        internal static Action<int> eventOnCoinsCollect;
+
+        public static void CallOnCoinsUpdate(int coins_num)
+        {
+            eventOnCoinsCollect?.Invoke(coins_num);
+        }
     }
 }

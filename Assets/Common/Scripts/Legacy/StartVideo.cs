@@ -1,26 +1,28 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class StartVideo : MonoBehaviour
+namespace Common.Scripts.Legacy
 {
-    [SerializeField] private VideoPlayer video_player;
-    [SerializeField] private GameObject main_panel;
-
-    private void Awake()
+    public class StartVideo : MonoBehaviour
     {
-        video_player.url = Application.streamingAssetsPath + "/" + "Start.mp4";
-        StartCoroutine(PlayVideo());
-    }
+        [SerializeField] private VideoPlayer video_player;
+        [SerializeField] private GameObject main_panel;
 
-    private IEnumerator PlayVideo()
-    {
-        video_player.Prepare();
-        video_player.Play();
-        yield return new WaitForSeconds(4.5f);
+        private void Awake()
+        {
+            video_player.url = Application.streamingAssetsPath + "/" + "Start.mp4";
+            StartCoroutine(PlayVideo());
+        }
 
-        main_panel.SetActive(true);
-        gameObject.SetActive(false);
+        private IEnumerator PlayVideo()
+        {
+            video_player.Prepare();
+            video_player.Play();
+            yield return new WaitForSeconds(4.5f);
+
+            main_panel.SetActive(true);
+            gameObject.SetActive(false);
+        }
     }
 }

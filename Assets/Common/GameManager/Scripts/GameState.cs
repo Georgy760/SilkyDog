@@ -1,4 +1,4 @@
-﻿namespace GameManager.Scripts
+﻿namespace Common.GameManager.Scripts
 {
     public enum GameState
     {

@@ -2,14 +2,12 @@
 
 namespace Common.Scripts.ManagerService
 {
-    public interface IControllerService
+    public interface IPlayerInputService
     {
         event Action OnButtonLeftPress;
-        event Action OnButtonLeftRelease; 
-        
+        event Action OnButtonLeftRelease;
         event Action OnButtonRightPress;
-        event Action OnButtonRightRelease; 
-        
+        event Action OnButtonRightRelease;
         event Action OnButtonSpaceTap;
     }
 }

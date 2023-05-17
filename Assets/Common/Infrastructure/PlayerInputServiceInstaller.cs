@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
 
-namespace Common.Scripts.ZenjectServices
+namespace Common.Infrastructure
 {
-    public class ControllerServiceInstaller : MonoInstaller
+    public class PlayerInputServiceInstaller : MonoInstaller
     {
-        [SerializeField] private ControllerService controllerServicePrefab;
+        [SerializeField] private PlayerInputService playerInputServicePrefab;
         [SerializeField] private SessionService sessionServicePrefab;
         public override void InstallBindings()
         {
@@ -18,8 +18,8 @@ namespace Common.Scripts.ZenjectServices
         private void InstallControlSheme()
         {
             Container
-                .Bind<IControllerService>()
-                .FromComponentInNewPrefab(controllerServicePrefab)
+                .Bind<IPlayerInputService>()
+                .FromComponentInNewPrefab(playerInputServicePrefab)
                 .UnderTransform(transform).AsSingle();
             Container
                .Bind<ISessionService>()

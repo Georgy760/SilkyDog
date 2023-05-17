@@ -1,25 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LeaderBoard : MonoBehaviour
+namespace Common.Scripts.Legacy
 {
-    [SerializeField] private Transform content;
-    [SerializeField] private Transform player_info_prefab;
-
-    public void OnClick() //test method
+    public class LeaderBoard : MonoBehaviour
     {
-        AddPlayer(1, "dog", 100);
-    }
+        [SerializeField] private Transform content;
+        [SerializeField] private Transform player_info_prefab;
 
-    public void AddPlayer(int place, string nick_name, int score)
-    {
-        Transform player = Instantiate(player_info_prefab);
-        player.SetParent(content);
+        public void OnClick() //test method
+        {
+            AddPlayer(1, "dog", 100);
+        }
 
-        PlayerInfo player_info = player.GetComponent<PlayerInfo>();
-        player_info.Place = place;
-        player_info.NickName = nick_name;
-        player_info.Score = score;
+        public void AddPlayer(int place, string nick_name, int score)
+        {
+            Transform player = Instantiate(player_info_prefab);
+            player.SetParent(content);
+
+            PlayerInfo player_info = player.GetComponent<PlayerInfo>();
+            player_info.Place = place;
+            player_info.NickName = nick_name;
+            player_info.Score = score;
+        }
     }
 }

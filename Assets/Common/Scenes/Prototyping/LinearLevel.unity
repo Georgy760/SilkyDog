@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c52598274f29ea4fb68402df0e6f1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerServicePrefab: {fileID: -4508040288203897598, guid: 69ad96787dcefce47b9666bda1b5b2f6, type: 3}
+  playerInputServicePrefab: {fileID: -8647806169080801363, guid: 888f9a9609dec8540851a3f6ae1aa0eb, type: 3}
   sessionServicePrefab: {fileID: 6488078258305035156, guid: 8ba0eb877b3837e4d8b2f58370addd41, type: 3}
 --- !u!4 &1817889772
 Transform:
@@ -564,6 +564,7 @@ MonoBehaviour:
   _platforms:
   - {fileID: 192648227}
   - {fileID: 2029973543}
+  _prevsObstacle: {fileID: 0}
 --- !u!4 &1856717633
 Transform:
   m_ObjectHideFlags: 0

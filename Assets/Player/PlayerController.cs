@@ -16,18 +16,18 @@ namespace Player
         [SerializeField] private AnimationCurve _curveDeltay;
         [SerializeField] private LayerMask _layerGround;
         private bool _isJump = false;
-        private IControllerService _controllerService;
+        private IPlayerInputService _playerInputService;
         private ISessionService _sessionService;
 
         [Inject]
-        void Construct(IControllerService controllerService, ISessionService sessionService)
+        void Construct(IPlayerInputService playerInputService, ISessionService sessionService)
         {
-            _controllerService = controllerService;
-            _controllerService.OnButtonSpaceTap += () => StartCoroutine(Jump());
-            _controllerService.OnButtonRightPress += () => _deltaX += _speed;
-            _controllerService.OnButtonRightRelease += () => _deltaX -= _speed;
-            _controllerService.OnButtonLeftPress += () => _deltaX -= _speed;
-            _controllerService.OnButtonLeftRelease += () => _deltaX += _speed;
+            _playerInputService = playerInputService;
+            _playerInputService.OnButtonSpaceTap += () => StartCoroutine(Jump());
+            _playerInputService.OnButtonRightPress += () => _deltaX += _speed;
+            _playerInputService.OnButtonRightRelease += () => _deltaX -= _speed;
+            _playerInputService.OnButtonLeftPress += () => _deltaX -= _speed;
+            _playerInputService.OnButtonLeftRelease += () => _deltaX += _speed;
             _sessionService = sessionService;
             _sessionService.OnStartRun += () => StartCoroutine(StartRun());
             _sessionService.OnEndRun += () =>
@@ -61,7 +61,7 @@ namespace Player
 
         private bool IsGrounded()
         {
-            // Выполняем BoxCast вниз, чтобы проверить столкновение с коллайдером земли
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ BoxCast пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             RaycastHit2D hit = Physics2D.BoxCast(transform.position, transform.localScale, 0f, Vector2.down, .1f, _layerGround.value);
 
             return hit.collider != null;
