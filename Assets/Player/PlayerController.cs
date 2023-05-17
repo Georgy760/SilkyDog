@@ -34,12 +34,14 @@ namespace Player
             _playerInputService.OnButtonRightRelease += MoveRightRelease;
             _playerInputService.OnButtonLeftPress += MoveLeftPress;
             _playerInputService.OnButtonLeftRelease += MoveLeftRelease;
+            _playerInputService.OnTouchStart += TouchTriggerPress;
+            _playerInputService.OnTouchEnd += TouchTriggerRelease;
             
             _sessionService = sessionService;
             _sessionService.OnStartRun += OnStartRun;
             _sessionService.OnRestartSession += RestartPlayer;
             _sessionService.OnEndRun += OnEndRun;
-
+            
             _ofssetYCollider = GetComponent<BoxCollider2D>().size.y / 2f;
             _startPos = transform.position;
             
@@ -63,12 +65,24 @@ namespace Player
             _playerInputService.OnButtonRightPress -= MoveRightPress;     
             _playerInputService.OnButtonRightRelease -= MoveRightRelease; 
             _playerInputService.OnButtonLeftPress -= MoveLeftPress;       
-            _playerInputService.OnButtonLeftRelease -= MoveLeftRelease;   
-            
+            _playerInputService.OnButtonLeftRelease -= MoveLeftRelease;  
+            _playerInputService.OnTouchStart -= TouchTriggerPress;
+            _playerInputService.OnTouchEnd -= TouchTriggerRelease;
             _sessionService.OnStartRun -= OnStartRun;
             _sessionService.OnRestartSession -= RestartPlayer;
             _sessionService.OnEndRun -= OnEndRun;
-        }                                                                 
+        }                        
+        private void TouchTriggerPress(Vector2 obj)
+        {
+            if(obj.x > 0f) MoveRightPress();
+            if(obj.x < 0f) MoveLeftPress();
+            if(obj.y > 0f && obj.x < 0f) CoroutineJump();
+        }
+        private void TouchTriggerRelease(Vector2 obj)
+        {
+            if(obj.x > 0f) MoveRightRelease();
+            if(obj.x < 0f) MoveLeftRelease();
+        }
         private void MoveLeftRelease()
         {
             _deltaX += _speed;

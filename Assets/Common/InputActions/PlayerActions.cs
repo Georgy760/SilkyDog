@@ -284,6 +284,74 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MobilePlay"",
+            ""id"": ""4272be88-d27a-4789-94a9-a9ecb987a6dd"",
+            ""actions"": [
+                {
+                    ""name"": ""TouchPosition"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""21ee110d-ebcf-4f6f-a1e0-c1f79688f2ff"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TouchPress"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed0731c8-a837-4add-8192-7b2fb1313175"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TouchInput"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""340e97aa-d155-43a6-9456-bc744ca6cb2b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9a8888c3-5bd7-478a-9777-dc47a894756f"",
+                    ""path"": ""<Touchscreen>/primaryTouch"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""555ce077-7f36-47c7-a653-460c890cdd45"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchPress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa5692de-0143-435e-ae36-b2823737be6d"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -301,6 +369,11 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Menu_EscTap = m_Menu.FindAction("EscTap", throwIfNotFound: true);
         m_Menu_UpTap = m_Menu.FindAction("UpTap", throwIfNotFound: true);
         m_Menu_DownTap = m_Menu.FindAction("DownTap", throwIfNotFound: true);
+        // MobilePlay
+        m_MobilePlay = asset.FindActionMap("MobilePlay", throwIfNotFound: true);
+        m_MobilePlay_TouchPosition = m_MobilePlay.FindAction("TouchPosition", throwIfNotFound: true);
+        m_MobilePlay_TouchPress = m_MobilePlay.FindAction("TouchPress", throwIfNotFound: true);
+        m_MobilePlay_TouchInput = m_MobilePlay.FindAction("TouchInput", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -506,6 +579,68 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         }
     }
     public MenuActions @Menu => new MenuActions(this);
+
+    // MobilePlay
+    private readonly InputActionMap m_MobilePlay;
+    private List<IMobilePlayActions> m_MobilePlayActionsCallbackInterfaces = new List<IMobilePlayActions>();
+    private readonly InputAction m_MobilePlay_TouchPosition;
+    private readonly InputAction m_MobilePlay_TouchPress;
+    private readonly InputAction m_MobilePlay_TouchInput;
+    public struct MobilePlayActions
+    {
+        private @PlayerActions m_Wrapper;
+        public MobilePlayActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TouchPosition => m_Wrapper.m_MobilePlay_TouchPosition;
+        public InputAction @TouchPress => m_Wrapper.m_MobilePlay_TouchPress;
+        public InputAction @TouchInput => m_Wrapper.m_MobilePlay_TouchInput;
+        public InputActionMap Get() { return m_Wrapper.m_MobilePlay; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MobilePlayActions set) { return set.Get(); }
+        public void AddCallbacks(IMobilePlayActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MobilePlayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MobilePlayActionsCallbackInterfaces.Add(instance);
+            @TouchPosition.started += instance.OnTouchPosition;
+            @TouchPosition.performed += instance.OnTouchPosition;
+            @TouchPosition.canceled += instance.OnTouchPosition;
+            @TouchPress.started += instance.OnTouchPress;
+            @TouchPress.performed += instance.OnTouchPress;
+            @TouchPress.canceled += instance.OnTouchPress;
+            @TouchInput.started += instance.OnTouchInput;
+            @TouchInput.performed += instance.OnTouchInput;
+            @TouchInput.canceled += instance.OnTouchInput;
+        }
+
+        private void UnregisterCallbacks(IMobilePlayActions instance)
+        {
+            @TouchPosition.started -= instance.OnTouchPosition;
+            @TouchPosition.performed -= instance.OnTouchPosition;
+            @TouchPosition.canceled -= instance.OnTouchPosition;
+            @TouchPress.started -= instance.OnTouchPress;
+            @TouchPress.performed -= instance.OnTouchPress;
+            @TouchPress.canceled -= instance.OnTouchPress;
+            @TouchInput.started -= instance.OnTouchInput;
+            @TouchInput.performed -= instance.OnTouchInput;
+            @TouchInput.canceled -= instance.OnTouchInput;
+        }
+
+        public void RemoveCallbacks(IMobilePlayActions instance)
+        {
+            if (m_Wrapper.m_MobilePlayActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMobilePlayActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MobilePlayActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MobilePlayActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MobilePlayActions @MobilePlay => new MobilePlayActions(this);
     public interface IPlayActions
     {
         void OnLeftPress(InputAction.CallbackContext context);
@@ -520,5 +655,11 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnEscTap(InputAction.CallbackContext context);
         void OnUpTap(InputAction.CallbackContext context);
         void OnDownTap(InputAction.CallbackContext context);
+    }
+    public interface IMobilePlayActions
+    {
+        void OnTouchPosition(InputAction.CallbackContext context);
+        void OnTouchPress(InputAction.CallbackContext context);
+        void OnTouchInput(InputAction.CallbackContext context);
     }
 }

@@ -1,8 +1,8 @@
 using Common.Scripts.ManagerService;
-using Common.Scripts;
 using UnityEngine;
 using Zenject;
 
+<<<<<<< Updated upstream
 public class DisplayMoney : MonoBehaviour
 { 
     [SerializeField] private TMPro.TMP_Text text;
@@ -23,5 +23,28 @@ public class DisplayMoney : MonoBehaviour
         _sessionService.money++;
         text.text = _sessionService.money.ToString();
         _audioService.PlaySound(Common.Scripts.AudioType.COIN); 
+=======
+namespace Common.Scripts
+{
+    public class DisplayMoney : MonoBehaviour
+    {
+        [SerializeField] private TMPro.TMP_Text text;
+    
+        private ISessionService _sessionService;
+        [Inject]
+        void Construct(ISessionService sessionService)
+        {
+            _sessionService = sessionService;
+        }
+        private void Awake()
+        {
+            Coin.OnPickUpCoin += AddCoin;
+        }
+        private void AddCoin()
+        {
+            _sessionService.money++;
+            text.text = _sessionService.money.ToString();
+        }
+>>>>>>> Stashed changes
     }
 }

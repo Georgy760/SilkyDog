@@ -22,6 +22,7 @@ namespace Common.Scripts.ManagerService
         public event Action OnEndRun;
         public event Action OnRestartSession;
 
+        
         public void StartGame()
         {
             OnStartRun?.Invoke();
