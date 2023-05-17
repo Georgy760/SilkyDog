@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
+using Common.Scripts;
 using Common.Scripts.ManagerService;
 using UnityEngine;
 using Zenject;
+using AudioType = Common.Scripts.AudioType;
 
 namespace Player
 {
@@ -15,40 +18,90 @@ namespace Player
         [SerializeField] private float _duratation = 1f;
         [SerializeField] private AnimationCurve _curveDeltay;
         [SerializeField] private LayerMask _layerGround;
+        
         private bool _isJump = false;
+        private float _ofssetYCollider;
+        private Vector3 _startPos;
+        private bool _stop = true;
+        
         private IPlayerInputService _playerInputService;
         private ISessionService _sessionService;
-        private float _ofssetYCollider;
-        private Vector3 _StartPos;
-        private bool _stop = true;
+        private IAudioService _audioService;
         [Inject]
-        void Construct(IPlayerInputService playerInputService, ISessionService sessionService)
+        void Construct(IPlayerInputService playerInputService, 
+            ISessionService sessionService, 
+            IAudioService audioService)
         {
             _playerInputService = playerInputService;
-            _playerInputService.OnButtonSpaceTap += () => StartCoroutine(Jump());
-            _playerInputService.OnButtonRightPress += () => _deltaX += _speed;
-            _playerInputService.OnButtonRightRelease += () => _deltaX -= _speed;
-            _playerInputService.OnButtonLeftPress += () => _deltaX -= _speed;
-            _playerInputService.OnButtonLeftRelease += () => _deltaX += _speed;
-            _sessionService = sessionService;
-            _sessionService.OnStartRun += () =>
-            {
-                _stop = true;
-                StartCoroutine(StartRun());
-            };
-            _sessionService.OnRestartSession += RestartPlayer;
-            _sessionService.OnEndRun += () =>
-            {
-                _stop = false;
-            };
-            _ofssetYCollider = GetComponent<BoxCollider2D>().size.y / 2f;
-            _StartPos = transform.position;
+            _playerInputService.OnButtonSpaceTap += CoroutineJump;
+            _playerInputService.OnButtonRightPress += MoveRightPress;
+            _playerInputService.OnButtonRightRelease += MoveRightRelease;
+            _playerInputService.OnButtonLeftPress += MoveLeftPress;
+            _playerInputService.OnButtonLeftRelease += MoveLeftRelease;
             
+            _sessionService = sessionService;
+            _sessionService.OnStartRun += OnStartRun;
+            _sessionService.OnRestartSession += RestartPlayer;
+            _sessionService.OnEndRun += OnEndRun;
+
+            _ofssetYCollider = GetComponent<BoxCollider2D>().size.y / 2f;
+            _startPos = transform.position;
+            
+            _audioService = audioService;
         }
+
+        private void OnEndRun()
+        {
+            _stop = false;
+        }
+
+        private void OnStartRun()
+        {
+            _stop = true;
+            StartCoroutine(StartRun());
+        }
+
+        private void OnDestroy()                                          
+        {                                                                 
+            _playerInputService.OnButtonSpaceTap -= CoroutineJump;        
+            _playerInputService.OnButtonRightPress -= MoveRightPress;     
+            _playerInputService.OnButtonRightRelease -= MoveRightRelease; 
+            _playerInputService.OnButtonLeftPress -= MoveLeftPress;       
+            _playerInputService.OnButtonLeftRelease -= MoveLeftRelease;   
+            
+            _sessionService.OnStartRun -= OnStartRun;
+            _sessionService.OnRestartSession -= RestartPlayer;
+            _sessionService.OnEndRun -= OnEndRun;
+        }                                                                 
+        private void MoveLeftRelease()
+        {
+            _deltaX += _speed;
+        }
+
+        private void MoveLeftPress()
+        {
+            _deltaX -= _speed;
+        }
+
+        private void MoveRightRelease()
+        {
+            _deltaX -= _speed;
+        }
+
+        private void MoveRightPress()
+        {
+            _deltaX += _speed;
+        }
+
+        private void CoroutineJump()
+        {
+            StartCoroutine(Jump());
+        }
+
 
         private void RestartPlayer()
         {
-            transform.position = _StartPos;
+            transform.position = _startPos;
         }
         private IEnumerator StartRun()
         {
@@ -83,6 +136,7 @@ namespace Player
            
             if (IsGrounded() && !_isJump)
             {
+                _audioService.PlaySound(AudioType.JUMP);
                 _isJump = true;
                 float expiredTime = 0f;
                 float progress = 0f;
