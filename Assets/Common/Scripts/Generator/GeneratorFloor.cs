@@ -1,4 +1,5 @@
-﻿using Common.Scripts.ManagerService;
+﻿using Common.GameManager.Scripts;
+using Common.Scripts.ManagerService;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,23 +25,40 @@ namespace Common.Scripts.Generator
         private float _offesetY;
         private int _curretPlatform = 0;
         private int _counterPlatforms = 0;
+
+        IGameManager _manager;
         [Inject]
-        void Constructor(ISessionService service)
+        void Constructor(ISessionService service, IGameManager manager)
         {
             _curretLevel = service.levelType;
             service.OnRestartSession += RestartGeneration;
             service.OnStartRun += () => StartCoroutine(StartGeneration());
-            foreach(ObstaclesScritableObjects obstacles in service.obstacles)
+
+            foreach (ObstaclesScritableObjects obstacles in service.obstacles)
             {
                 _countryObstaclesPrefab.Add(obstacles.levelType, obstacles.obstaclesObjects);
                 _countryBackGround.Add(obstacles.levelType, obstacles.BackGround);
                 _countryFloor.Add(obstacles.levelType, obstacles.Floor);
                 _countryBack.Add(obstacles.levelType, obstacles.BackImage);
             }
-            
-            ChangeCountry(_curretLevel);
 
+            _manager = manager;
+            _manager.OnFadeCompleteLevelChange += StartLevelChange;
+            ChangeCountry(_curretLevel); 
         }
+
+        private void StartLevelChange(bool isChange)
+        {
+            if(isChange)
+            {
+                LevelType level = _curretLevel;
+                while (level == _curretLevel)
+                    level = (LevelType)Random.Range(0, 5);
+                ChangeCountry(level);
+                _manager.EndLevelChange();
+            } 
+        }
+
         private void RestartGeneration()
         {
             _platforms[0].transform.position = _startPosFirstPlatform;
@@ -53,6 +71,7 @@ namespace Common.Scripts.Generator
             _sprite.sprite = _countryBackGround[level];
             foreach(GameObject floor in _platforms)
                 floor.GetComponent<SpriteRenderer>().sprite = _countryFloor[level];
+            _curretLevel = level;
         }
         private void Awake()
         {

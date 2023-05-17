@@ -29,7 +29,15 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 2bf0ddd5ca9b2ba4fb82c7d31edc5f39
+    name: CoinVolume
+  - guid: 40c42facd6a4607468b3d2d5d5434d39
+    name: JumpVolume
+  - guid: cb577577dfa825f4494b524a0986568f
+    name: MasterVolume
+  - guid: b85401e35de4de8468126419f355a47a
+    name: MusicVolume
   m_AudioMixerGroupViews:
   - guids:
     - 5b58f75de75e0ed44adf4ce21aab68d1
@@ -86,8 +94,8 @@ AudioMixerSnapshotController:
   m_SnapshotID: 281e7f43a1caa6a418a6bb59307d8438
   m_FloatValues:
     b85401e35de4de8468126419f355a47a: -10.345207
-    2bf0ddd5ca9b2ba4fb82c7d31edc5f39: -0.16685188
-    cb577577dfa825f4494b524a0986568f: -0.025776558
+    2bf0ddd5ca9b2ba4fb82c7d31edc5f39: -0.08374829
+    cb577577dfa825f4494b524a0986568f: 0.04171297
   m_TransitionOverrides: {}
 --- !u!243 &6417090417309818374
 AudioMixerGroupController:

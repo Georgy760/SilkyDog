@@ -4,13 +4,15 @@ using UnityEngine;
 using Zenject;
 
 public class DisplayMoney : MonoBehaviour
-{
-    private int _coin;
+{ 
     [SerializeField] private TMPro.TMP_Text text;
+    private IAudioService _audioService;
+    private ISessionService _sessionService;
     [Inject]
-    void Construct(ISessionService service)
+    void Construct(ISessionService service, IAudioService audioService)
     {
-        _coin = service.money;
+        _sessionService = service;
+        _audioService = audioService;
     }
     private void Awake()
     {
@@ -18,7 +20,8 @@ public class DisplayMoney : MonoBehaviour
     }
     private void AddCoin()
     {
-        _coin++;
-        text.text = _coin.ToString();
+        _sessionService.money++;
+        text.text = _sessionService.money.ToString();
+        _audioService.PlaySound(Common.Scripts.AudioType.COIN); 
     }
 }

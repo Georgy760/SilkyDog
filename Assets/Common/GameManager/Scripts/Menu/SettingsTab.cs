@@ -1,9 +1,10 @@
-﻿using UnityEngine.UI;
+﻿using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Common.GameManager.Scripts.Menu
 {
-    public class SettingsTab
+    public class SettingsTab : MonoBehaviour
     {
         public Button _close;
 
@@ -13,7 +14,21 @@ namespace Common.GameManager.Scripts.Menu
         private void Construct(IGameManager gameManager)
         {
             _gameManager = gameManager;
-            _close.onClick.AddListener(_gameManager.TogglePause);
+            _close.onClick.AddListener(BackToMenu);
+            _gameManager.OnToggleSetting += ToMenu;
+        }
+
+        private void OnDestroy()
+        {
+            _close.onClick.RemoveListener(BackToMenu);
+        }
+        private void ToMenu()
+        {
+            gameObject.SetActive(!gameObject.activeSelf);
+        }
+        private void BackToMenu()
+        {
+            gameObject.SetActive(!gameObject.activeSelf);
         }
     }
 }

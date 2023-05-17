@@ -12,7 +12,8 @@ namespace Common.GameManager.Scripts
         public event Action<bool> ShowMainMenu;
         public event Action<bool> OnMainMenuFadeComplete;
         public event Action<GameState, GameState> OnGameStateChanged;
-
+        public event Action<bool> OnFadeCompleteLevelChange;
+        public event Action OnToggleSetting;
         private string _currentLevelName;
         private List<AsyncOperation> _loadOperations;
         private GameState CurrentGameState { get; set; } = GameState.PREGAME;
@@ -28,6 +29,7 @@ namespace Common.GameManager.Scripts
             OnMainMenuFadeComplete += HandleMainMenuFadeComplete;
             OnGameStateChanged?.Invoke(GameState.PREGAME, CurrentGameState);
             MovingObj.OnDeath += ResultLevel;
+            DisplayDistance.OnChangeLevel += () => UpdateState(GameState.FadePhase);
         }
         
         private void Start()
@@ -49,11 +51,15 @@ namespace Common.GameManager.Scripts
         }
         public void ToggleSettings()
         {
-            //TODO Add settings feature
+            OnToggleSetting?.Invoke();
         }
         public void StartGame()
         {
             LoadLevel("LinearLevel");
+        }
+        public void EndLevelChange()
+        {
+            UpdateState(GameState.RUNNING);
         }
         public void TogglePause()
         {
@@ -123,6 +129,9 @@ namespace Common.GameManager.Scripts
                     // Pause player, enemies etc, Lock other input in other systems
                     Time.timeScale = 0.0f;
                     break;
+                case GameState.FadePhase:
+                    Time.timeScale = 1.0f;
+                    break;
                 case GameState.RESULT:
                     // Pause player, enemies etc, Lock other input in other systems
                     Time.timeScale = 0.0f;
@@ -149,6 +158,11 @@ namespace Common.GameManager.Scripts
         {
             var ao = SceneManager.UnloadSceneAsync(levelName);
             ao.completed += OnUnloadOperationComplete;
+        }
+
+        public void HandleFadeComplete(bool fadeIn)
+        {
+            OnFadeCompleteLevelChange?.Invoke(fadeIn);
         }
     }
 }

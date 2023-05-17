@@ -6,6 +6,7 @@
         RUNNING = 1,
         PAUSED,
         RESULT,
-        STARTRUNNING
+        STARTRUNNING,
+        FadePhase
     }
 }

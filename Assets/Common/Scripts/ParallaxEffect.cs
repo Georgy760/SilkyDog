@@ -19,19 +19,19 @@ namespace Common.Scripts
 
         private RawImage image; //создаем объект нашей картинки
 
-        private bool isStop = true;
+        private bool _isStop = true;
 
         [Inject]
         void Construct(ISessionService service)
         {
             service.OnStartRun += () =>
             {
-                isStop = true;
+                _isStop = true;
                 StartCoroutine(StartRun());
             };
             service.OnEndRun += () =>
             {
-                isStop = false;
+                _isStop = false;
                 StopCoroutine(StartRun());
             };
         }
@@ -49,7 +49,7 @@ namespace Common.Scripts
         {
 
             //в апдейте прописываем как, с какой скоростью и куда мы будем двигать нашу картинку
-            while (true)
+            while (_isStop)
             {
                 pos += speed * Time.deltaTime;
 

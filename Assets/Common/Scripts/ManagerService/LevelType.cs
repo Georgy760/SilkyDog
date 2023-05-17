@@ -9,9 +9,10 @@ namespace Common.Scripts.ManagerService
 {
     public enum LevelType
     {
-        India,
-        Japan,
-        City,
-        Egypt
+        India = 0,
+        Japan = 1,
+        City = 2,
+        Egypt = 3,
+        London = 4
     }
 }

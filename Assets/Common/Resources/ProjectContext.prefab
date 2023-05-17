@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManagerPrefab: {fileID: 6700266418825038216, guid: 205afef3085932540a784f7876f0f515, type: 3}
-  UIPrefab: {fileID: 8199859525114381143, guid: cb52f52d412ecc6409ca1d0b4fd76164, type: 3}
+  UIPrefab: {fileID: 8199859525114381143, guid: 3ed14fe8eae70c142805eb6e99fbb109, type: 3}
 --- !u!114 &5353899142341107611
 MonoBehaviour:
   m_ObjectHideFlags: 0
