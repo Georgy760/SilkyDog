@@ -2,8 +2,8 @@
 {
     public enum GameState
     {
-        PREGAME,
-        RUNNING,
+        PREGAME = 0,
+        RUNNING = 1,
         PAUSED,
         RESULT,
         STARTRUNNING
