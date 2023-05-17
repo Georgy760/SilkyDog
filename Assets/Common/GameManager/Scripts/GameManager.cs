@@ -1,11 +1,9 @@
 ﻿using Common.Scripts.Legacy;
-using Common.Scripts.ManagerService;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using Zenject;
 
 namespace Common.GameManager.Scripts
 {
@@ -18,10 +16,8 @@ namespace Common.GameManager.Scripts
         private string _currentLevelName;
         private List<AsyncOperation> _loadOperations;
         private GameState CurrentGameState { get; set; } = GameState.PREGAME;
+        
         private PlayerActions _playerActions;
-      
-
-
         private void Awake()
         {
             _currentLevelName = SceneManager.GetActiveScene().name;

@@ -12,7 +12,8 @@ namespace Common.Scripts.AudioService
         private void Awake()
         {
             OnPlaySound += PlaySoundOfType;
-            _backgroundMusic.Play();
+            if (!_backgroundMusic.isPlaying)
+                _backgroundMusic.Play();
         }
 
         private void OnDestroy()
@@ -29,6 +30,10 @@ namespace Common.Scripts.AudioService
                     break;
                 case AudioType.JUMP:
                     _jump.Play();
+                    break;
+                case AudioType.BACKGROUND:
+                    if(!_backgroundMusic.isPlaying) 
+                        _backgroundMusic.Play();
                     break;
             }
         }

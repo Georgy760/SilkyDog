@@ -3,6 +3,7 @@
     public enum AudioType
     {
         COIN,
-        JUMP
+        JUMP,
+        BACKGROUND
     }
 }

@@ -17,6 +17,6 @@ public class AudioServiceInstaller : MonoInstaller
             .Bind<IAudioService>()
             .FromComponentInNewPrefab(AudioServicePrefab)
             .UnderTransform(transform).AsSingle();
-        Container.InstantiatePrefab(AudioServicePrefab);
+        //Container.InstantiatePrefab(AudioServicePrefab);
     }
 }
