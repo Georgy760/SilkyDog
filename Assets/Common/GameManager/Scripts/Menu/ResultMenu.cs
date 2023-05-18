@@ -19,11 +19,14 @@ namespace Common.GameManager.Scripts.Menu
         [SerializeField] private Button QuitButton;
         
         private IGameManager _gameManager;
+        private IUserData _userData;
         [Inject]
-        private void Construct(IGameManager gameManager)
+        private void Construct(IGameManager gameManager, IUserData userData)
         {
             _gameManager = gameManager;
+            _userData = userData;
             _gameManager.OnGameStateChanged += HandleGameStateChanged;
+            _userData.DataUpdated += SetData;
             QuitButton.onClick.AddListener(HandleQuitClick);
             RestartButton.onClick.AddListener(HandleRestartClick);
         }
@@ -31,6 +34,7 @@ namespace Common.GameManager.Scripts.Menu
         private void OnDestroy()
         {
             _gameManager.OnGameStateChanged -= HandleGameStateChanged;
+            _userData.DataUpdated -= SetData;
             QuitButton.onClick.RemoveListener(HandleQuitClick);
             RestartButton.onClick.RemoveListener(HandleRestartClick);
         } 
@@ -47,6 +51,11 @@ namespace Common.GameManager.Scripts.Menu
                     gameObject.SetActive(false);
                     break;
             }
+        }
+
+        private void SetData(ISessionService service)
+        {
+            _text.text = service.record.ToString();
         }
          
 

@@ -17,7 +17,6 @@ namespace Common.Scripts.ManagerService
 
         [SerializeField] private List<ObstaclesScritableObjects> _obstacles = new List<ObstaclesScritableObjects>();
         public List<ObstaclesScritableObjects> obstacles { get => _obstacles; set => _obstacles = value; }
-
         public event Action OnStartRun;
         public event Action OnEndRun;
         public event Action OnRestartSession;

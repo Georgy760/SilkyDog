@@ -74,12 +74,14 @@ namespace Player
         }                        
         private void TouchTriggerPress(Vector2 obj)
         {
+            Debug.Log($"Press: {obj}");
             if(obj.x > 0f) MoveRightPress();
             if(obj.x < 0f) MoveLeftPress();
             if(obj.y > 0f && obj.x < 0f) CoroutineJump();
         }
         private void TouchTriggerRelease(Vector2 obj)
         {
+            Debug.Log($"Release: {obj}");
             if(obj.x > 0f) MoveRightRelease();
             if(obj.x < 0f) MoveLeftRelease();
         }

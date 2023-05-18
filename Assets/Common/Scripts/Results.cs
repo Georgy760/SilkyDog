@@ -1,4 +1,6 @@
-﻿using Common.GameManager.Scripts;
+﻿using System;
+using Common.GameManager.Scripts;
+using Common.Scripts.Legacy;
 using Common.Scripts.ManagerService;
 using Common.Scripts.UserData;
 using UnityEngine;
@@ -13,16 +15,21 @@ namespace Common.Scripts
         [Inject]
         private void Construct(IUserData userData, ISessionService sessionService)
         {
+            Debug.Log("Inject Record");
             _userData = userData;
             _sessionService = sessionService;
-            _sessionService.OnEndRun += SetResults;
+            MovingObj.OnDeath += SetResults;
+        }
+
+        private void OnDestroy()
+        {
+            MovingObj.OnDeath -= SetResults;
         }
 
         private void SetResults()
         {
-            _userData.Money += _sessionService.money;
-            if (_userData.Record < _sessionService.record) 
-                _userData.Record = _sessionService.record;
+            Debug.Log($"Money {_sessionService.money}\nDistance {_sessionService.record}"  );
+            _userData.DataUpdate(_sessionService);
         }
     }
 }

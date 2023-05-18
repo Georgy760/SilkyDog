@@ -14,5 +14,7 @@ namespace Common.Scripts.ManagerService
         LevelType levelType { get; set; }
 
         List<ObstaclesScritableObjects> obstacles { get; set; }
+        public void EndRun();
+        public void RestartGame(); 
     }
 }

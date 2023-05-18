@@ -36,11 +36,11 @@ namespace Common.Scripts.Generator
         void Constructor(ISessionService service, IGameManager manager)
         {
             _service = service;
-            _curretLevel = service.levelType;
+            _curretLevel = _service.levelType;
             _service.OnRestartSession += RestartGeneration;
             _service.OnStartRun += StartLevel;
             _service.OnEndRun += EndLevel;
-            foreach (ObstaclesScritableObjects obstacles in service.obstacles)
+            foreach (ObstaclesScritableObjects obstacles in _service.obstacles)
             {
                 _countryObstaclesPrefab.Add(obstacles.levelType, obstacles.obstaclesObjects);
                 _countryBackGround.Add(obstacles.levelType, obstacles.BackGround);

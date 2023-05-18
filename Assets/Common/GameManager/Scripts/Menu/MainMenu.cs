@@ -40,6 +40,7 @@ namespace Common.GameManager.Scripts.Menu
             {
                 _mainMenuAnimator.clip = _fadeOutAnimation;
                 _mainMenuAnimator.Play();
+                OnFadeOutComplete();
             }
 
             if (previousState != GameState.PREGAME && currentState == GameState.PREGAME)
@@ -47,6 +48,7 @@ namespace Common.GameManager.Scripts.Menu
                 _mainMenuAnimator.Stop();
                 _mainMenuAnimator.clip = _fadeInAnimation;
                 _mainMenuAnimator.Play();
+                OnFadeInComplete();
             }
         }
         private void HandleSettingsClick()

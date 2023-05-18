@@ -1,4 +1,5 @@
 ﻿using System;
+using Common.Scripts.ManagerService;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -41,12 +42,22 @@ namespace Common.Scripts.UserData
             get => _record;
             set
             {
-                _record = value;
+                if (_record < value) 
+                    _record = value;
             }
         }
         public bool Connected { get; set; } = false;
         
         public event Action CollectionReady;
+        public event Action<ISessionService> DataUpdated;
+
+        public void DataUpdate(ISessionService sessionService)
+        {
+            Money += sessionService.money;
+            Record = sessionService.record;
+            Debug.Log($"UserData:\n Money: {Money}\n Record: {Record}");
+            DataUpdated?.Invoke(sessionService);
+        }
         public void ConnectionCompleted()
         {
             Connected = true;
