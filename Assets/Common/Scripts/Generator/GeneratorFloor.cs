@@ -16,6 +16,8 @@ namespace Common.Scripts.Generator
         [SerializeField] private List<GameObject> _platforms;
         [SerializeField] private Image _sprite;
         [SerializeField] GameObject _prevsObstacle;
+        [SerializeField] GameObject _FloorEnemy;
+        [SerializeField] GameObject _AirEnemy; 
         [SerializeField] private RawImage _movingBack;
         [SerializeField] private Transform _parentObstacles;
         private LevelType _curretLevel;
@@ -119,6 +121,7 @@ namespace Common.Scripts.Generator
         }
         private IEnumerator StartGeneration()
         {
+            bool isCanSpawn = true;
             while (_isStop)
             {
                 if (_counterPlatforms == 2)
@@ -138,6 +141,22 @@ namespace Common.Scripts.Generator
                     GameObject obstacles = _countryObstaclesPrefab[_curretLevel][Random.Range(0, _countryObstaclesPrefab[_curretLevel].Count - 1)];
                     _prevsObstacle = Instantiate(obstacles, _platforms[_curretPlatform].transform.position + new Vector3(0f, _offesetY * 0.8f, 0f), Quaternion.identity, _parentObstacles);
                     _counterPlatforms = 0;
+                    isCanSpawn = true;
+                }
+                if(_counterPlatforms == 1 && isCanSpawn)
+                {
+                    int typeEnemy = Random.Range(0, 2);
+                    Debug.Log(typeEnemy);
+                    switch (typeEnemy)
+                    {
+                        case 0:
+                            Instantiate(_FloorEnemy, _platforms[_curretPlatform].transform.position + new Vector3(0f, _offesetY * 0.8f, 0f), Quaternion.identity, _parentObstacles);
+                            break;
+                        case 1:
+                            Instantiate(_AirEnemy, _platforms[_curretPlatform].transform.position + new Vector3(0f, _offesetY * 1.8f, 0f), Quaternion.identity, _parentObstacles);
+                            break;
+                    }
+                    isCanSpawn = false;
                 }
                 yield return new WaitForEndOfFrame();
             } 
