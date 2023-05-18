@@ -139,7 +139,7 @@ namespace Common.Scripts.Generator
                     }*/
                     
                     GameObject obstacles = _countryObstaclesPrefab[_curretLevel][Random.Range(0, _countryObstaclesPrefab[_curretLevel].Count - 1)];
-                    _prevsObstacle = Instantiate(obstacles, _platforms[_curretPlatform].transform.position + new Vector3(0f, _offesetY * 0.8f, 0f), Quaternion.identity, _parentObstacles);
+                    _prevsObstacle = Instantiate(obstacles, _platforms[_curretPlatform].transform.position + new Vector3(-_offesetX/2f, _offesetY * 0.8f, 0f), Quaternion.identity, _parentObstacles);
                     _counterPlatforms = 0;
                     isCanSpawn = true;
                 }
