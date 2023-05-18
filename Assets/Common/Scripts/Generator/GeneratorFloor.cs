@@ -1,4 +1,5 @@
-﻿using Common.GameManager.Scripts;
+﻿using System;
+using Common.GameManager.Scripts;
 using Common.Scripts.ManagerService;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Common.Scripts.Generator
 {
@@ -121,7 +123,18 @@ namespace Common.Scripts.Generator
             {
                 if (_counterPlatforms == 2)
                 {
-                    Destroy(_prevsObstacle.gameObject);
+                    if(_prevsObstacle != null) 
+                        Destroy(_prevsObstacle.gameObject);
+                    else Debug.LogWarning("NULL Exception");
+                    /*try
+                    {
+                        Destroy(_prevsObstacle.gameObject);
+                    }
+                    catch (NullReferenceException ne)
+                    {
+                        Debug.Log(ne.Message);
+                    }*/
+                    
                     GameObject obstacles = _countryObstaclesPrefab[_curretLevel][Random.Range(0, _countryObstaclesPrefab[_curretLevel].Count - 1)];
                     _prevsObstacle = Instantiate(obstacles, _platforms[_curretPlatform].transform.position + new Vector3(0f, _offesetY * 0.8f, 0f), Quaternion.identity, _parentObstacles);
                     _counterPlatforms = 0;
