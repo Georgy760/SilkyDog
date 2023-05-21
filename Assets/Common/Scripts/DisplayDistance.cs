@@ -47,9 +47,10 @@ public class DisplayDistance : MonoBehaviour
             _service.record = (int)player.position.x - x;
             _text.text ="Distance:" + _service.record.ToString();
             //Debug.Log(_curretLevelToChange);
-            if (_service.record / _curretLevelToChange == 1)
+            if ((float)_service.record / (float)_curretLevelToChange >= 1)
             {
-                OnChangeLevel?.Invoke();
+                Debug.Log("Chaneg level");
+                OnChangeLevel?.Invoke();    
                 _curretLevelToChange += _distanceBettwenLevel;
             }
             yield return new WaitForFixedUpdate();

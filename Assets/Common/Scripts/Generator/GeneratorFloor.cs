@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 using Random = UnityEngine.Random;
+using Common.Scripts.Legacy;
+using System.Linq;
 
 namespace Common.Scripts.Generator
 {
@@ -15,11 +17,11 @@ namespace Common.Scripts.Generator
     {
         [SerializeField] private List<GameObject> _platforms;
         [SerializeField] private Image _sprite;
-        [SerializeField] GameObject _prevsObstacle;
         [SerializeField] GameObject _FloorEnemy;
-        [SerializeField] GameObject _AirEnemy; 
+        [SerializeField] GameObject _AirEnemy;
         [SerializeField] private RawImage _movingBack;
         [SerializeField] private Transform _parentObstacles;
+        [SerializeField] private GameObject _moneyObstales;
         private LevelType _curretLevel;
         private Dictionary<LevelType, List<GameObject>> _countryObstaclesPrefab = new Dictionary<LevelType, List<GameObject>>();
         private Dictionary<LevelType, Sprite> _countryBackGround = new Dictionary<LevelType, Sprite>();
@@ -32,7 +34,6 @@ namespace Common.Scripts.Generator
         private int _curretPlatform = 0;
         private int _counterPlatforms = 0;
         private bool _isStop = true;
-        
 
         IGameManager _manager;
         ISessionService _service;
@@ -42,7 +43,6 @@ namespace Common.Scripts.Generator
             _service = service;
             _curretLevel = _service.levelType;
             _service.OnRestartSession += RestartGeneration;
-            _service.OnStartRun += StartLevel;
             _service.OnEndRun += EndLevel;
             foreach (ObstaclesScritableObjects obstacles in _service.obstacles)
             {
@@ -54,37 +54,38 @@ namespace Common.Scripts.Generator
 
             _manager = manager;
             _manager.OnFadeCompleteLevelChange += StartLevelChange;
-            ChangeCountry(_curretLevel); 
+            ChangeCountry(_curretLevel);
         }
         private void OnDestroy()
         {
             _service.OnRestartSession -= RestartGeneration;
-            _service.OnStartRun -= StartLevel;
             _service.OnEndRun -= EndLevel;
             TriggerForReplaceFloor.OnTriggerToReplace -= ReplacePlatform;
         }
 
-        private void StartLevel()
-        {
-            _isStop = true;
-            StartCoroutine(StartGeneration());
-        }
-
         private void EndLevel()
         {
-            _isStop = false;
-            Destroy(_prevsObstacle);
+            foreach (var plat in _platforms)
+            {
+                List<MovingObj> prevsObj = plat.GetComponentsInChildren<MovingObj>().ToList();              
+                foreach (MovingObj obj in prevsObj)
+                    Destroy(obj.gameObject);
+
+                List<Coin> MoneyObjs = plat.GetComponentsInChildren<Coin>().ToList();
+                foreach (Coin obj in MoneyObjs)
+                    Destroy(obj.gameObject);
+            }
         }
         private void StartLevelChange(bool isChange)
         {
-            if(isChange)
+            if (isChange)
             {
                 LevelType level = _curretLevel;
                 while (level == _curretLevel)
                     level = (LevelType)Random.Range(0, 5);
                 ChangeCountry(level);
                 _manager.EndLevelChange();
-            } 
+            }
         }
 
         private void RestartGeneration()
@@ -97,7 +98,7 @@ namespace Common.Scripts.Generator
         {
             _movingBack.texture = _countryBack[level];
             _sprite.sprite = _countryBackGround[level];
-            foreach(GameObject floor in _platforms)
+            foreach (GameObject floor in _platforms)
                 floor.GetComponent<SpriteRenderer>().sprite = _countryFloor[level];
             _curretLevel = level;
         }
@@ -108,43 +109,35 @@ namespace Common.Scripts.Generator
 
             TriggerForReplaceFloor.OnTriggerToReplace += ReplacePlatform;
             _offesetX = _platforms[0].GetComponent<BoxCollider2D>().size.x * _platforms[0].transform.localScale.x;
-            _offesetY = _platforms[0].GetComponent<BoxCollider2D>().size.y * _platforms[0].transform.localScale.y; 
+            _offesetY = _platforms[0].GetComponent<BoxCollider2D>().size.y * _platforms[0].transform.localScale.y;
         }
 
         private void ReplacePlatform(int numPlatform)
         {
             int numPlatformSecond = 1;
             if (numPlatform == 1) numPlatformSecond = 0;
-            _platforms[numPlatformSecond].transform.position = _platforms[numPlatform].transform.position + new Vector3(_offesetX, 0,0);
+            _platforms[numPlatformSecond].transform.position = _platforms[numPlatform].transform.position + new Vector3(_offesetX, 0, 0);
             _curretPlatform = numPlatformSecond;
-            _counterPlatforms += 1;
-        }
-        private IEnumerator StartGeneration()
-        {
-            bool isCanSpawn = true;
-            while (_isStop)
+            List<MovingObj> prevsObj = _platforms[_curretPlatform].GetComponentsInChildren<MovingObj>().ToList();
+            foreach (MovingObj obj in prevsObj)
             {
-                if (_counterPlatforms == 2)
+                if (obj != null)
                 {
-                    if(_prevsObstacle != null) 
-                        Destroy(_prevsObstacle.gameObject);
-                    else Debug.LogWarning("NULL Exception");
-                    /*try
-                    {
-                        Destroy(_prevsObstacle.gameObject);
-                    }
-                    catch (NullReferenceException ne)
-                    {
-                        Debug.Log(ne.Message);
-                    }*/
-                    
-                    GameObject obstacles = _countryObstaclesPrefab[_curretLevel][Random.Range(0, _countryObstaclesPrefab[_curretLevel].Count - 1)];
-                    _prevsObstacle = Instantiate(obstacles, _platforms[_curretPlatform].transform.position + new Vector3(-_offesetX/2f, _offesetY * 0.8f, 0f), Quaternion.identity, _parentObstacles);
-                    _counterPlatforms = 0;
-                    isCanSpawn = true;
+                    Destroy(obj.gameObject);
                 }
-                if(_counterPlatforms == 1 && isCanSpawn)
-                {
+            }
+            int typeObstacles = Random.Range(0, 3);
+            GameObject obst;
+            switch (typeObstacles)
+            {
+                case 0:
+
+                    GameObject obstacles = _countryObstaclesPrefab[_curretLevel][Random.Range(0, _countryObstaclesPrefab[_curretLevel].Count - 1)];
+                    obst = Instantiate(obstacles, _platforms[_curretPlatform].transform.position + new Vector3(-_offesetX / 4f, _offesetY * 0.8f, 0f),
+                                                 Quaternion.identity, _platforms[_curretPlatform].transform);
+                    obst.transform.localScale /= _platforms[_counterPlatforms].transform.localScale.x;
+                    break;
+                case 1:
                     int typeEnemy = Random.Range(0, 2);
                     Debug.Log(typeEnemy);
                     switch (typeEnemy)
@@ -156,10 +149,13 @@ namespace Common.Scripts.Generator
                             Instantiate(_AirEnemy, _platforms[_curretPlatform].transform.position + new Vector3(0f, _offesetY * 1.8f, 0f), Quaternion.identity, _parentObstacles);
                             break;
                     }
-                    isCanSpawn = false;
-                }
-                yield return new WaitForEndOfFrame();
-            } 
+                    break;
+                case 2:
+                    obst = Instantiate(_moneyObstales, _platforms[_curretPlatform].transform.position + new Vector3(-_offesetX / 4f, _offesetY * 0.8f, 0f),
+                                                 Quaternion.identity, _platforms[_curretPlatform].transform);
+                    obst.transform.localScale /= _platforms[_counterPlatforms].transform.localScale.x;
+                    break;
+            }
         }
     }
 }

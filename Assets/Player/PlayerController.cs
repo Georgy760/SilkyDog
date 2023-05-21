@@ -9,7 +9,7 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float _deltaX = 5f;
+        [SerializeField] private float _StartdeltaX = 5f; 
         [SerializeField] private float _speed = 1f;
         [SerializeField] private float _duratation = 1f;
         [SerializeField] private AnimationCurve _curveDeltay;
@@ -17,6 +17,8 @@ namespace Player
         
         private bool _isJump = false;
         private float _ofssetYCollider;
+        private float _levelTime = 0f;
+        private float _deltaX;
         private Vector3 _startPos;
         private bool _stop = true;
         
@@ -49,13 +51,15 @@ namespace Player
         }
 
         private void OnEndRun()
-        {
+        { 
             _stop = false;
         }
 
         private void OnStartRun()
         {
             _stop = true;
+            _deltaX = _StartdeltaX;
+            _levelTime = 0f;
             StartCoroutine(StartRun());
         }
 
@@ -119,6 +123,12 @@ namespace Player
         {
             while (_stop)
             {
+                _levelTime += Time.deltaTime;
+                if (_levelTime >= 5)
+                {
+                    _deltaX++;
+                    _levelTime = 0f;
+                }
                 float NewX = Mathf.Clamp(_speed * Time.deltaTime, _deltaX * Time.deltaTime, _deltaX + _speed * Time.deltaTime);
                 transform.position += new Vector3(NewX, 0,0);
 
