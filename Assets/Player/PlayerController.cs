@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Common.Scripts;
 using Common.Scripts.ManagerService;
@@ -15,10 +16,10 @@ namespace Player
         [SerializeField] private AnimationCurve _curveDeltay;
         [SerializeField] private LayerMask _layerGround;
         
-        private bool _isJump = false;
-        private float _ofssetYCollider;
+        [SerializeField] private bool _isJump = false;
+        [SerializeField] private float _ofssetYCollider;
         private float _levelTime = 0f;
-        private float _deltaX;
+        [SerializeField] private float _deltaX;
         private Vector3 _startPos;
         private bool _stop = true;
         
@@ -44,10 +45,23 @@ namespace Player
             _sessionService.OnRestartSession += RestartPlayer;
             _sessionService.OnEndRun += OnEndRun;
             
-            _ofssetYCollider = GetComponent<BoxCollider2D>().size.y / 2f;
+            _ofssetYCollider = GetComponent<BoxCollider2D>().size.y / 2f + 0.1f ;
             _startPos = transform.position;
             
             _audioService = audioService;
+        }
+        private void OnDestroy()                                          
+        {
+            _playerInputService.OnButtonSpaceTap -= CoroutineJump;        
+            _playerInputService.OnButtonRightPress -= MoveRightPress;     
+            _playerInputService.OnButtonRightRelease -= MoveRightRelease; 
+            _playerInputService.OnButtonLeftPress -= MoveLeftPress;       
+            _playerInputService.OnButtonLeftRelease -= MoveLeftRelease;  
+            _playerInputService.OnTouchStart -= TouchTriggerPress;
+            _playerInputService.OnTouchEnd -= TouchTriggerRelease;
+            _sessionService.OnStartRun -= OnStartRun;
+            _sessionService.OnRestartSession -= RestartPlayer;
+            _sessionService.OnEndRun -= OnEndRun;
         }
 
         private void OnEndRun()
@@ -63,19 +77,6 @@ namespace Player
             StartCoroutine(StartRun());
         }
 
-        private void OnDestroy()                                          
-        {                                                                 
-            _playerInputService.OnButtonSpaceTap -= CoroutineJump;        
-            _playerInputService.OnButtonRightPress -= MoveRightPress;     
-            _playerInputService.OnButtonRightRelease -= MoveRightRelease; 
-            _playerInputService.OnButtonLeftPress -= MoveLeftPress;       
-            _playerInputService.OnButtonLeftRelease -= MoveLeftRelease;  
-            _playerInputService.OnTouchStart -= TouchTriggerPress;
-            _playerInputService.OnTouchEnd -= TouchTriggerRelease;
-            _sessionService.OnStartRun -= OnStartRun;
-            _sessionService.OnRestartSession -= RestartPlayer;
-            _sessionService.OnEndRun -= OnEndRun;
-        }                        
         private void TouchTriggerPress(Vector2 obj)
         {
             Debug.Log($"Press: {obj}");
@@ -91,71 +92,52 @@ namespace Player
         }
         private void MoveLeftRelease()
         {
-            _deltaX += _speed;
+            _deltaX = 0;
         }
 
         private void MoveLeftPress()
         {
-            _deltaX -= _speed;
+            _deltaX = -1;
         }
 
         private void MoveRightRelease()
         {
-            _deltaX -= _speed;
+            _deltaX = 0;
         }
 
         private void MoveRightPress()
         {
-            _deltaX += _speed;
-        }
-
-        private void CoroutineJump()
-        {
-            StartCoroutine(Jump());
-        }
-
-
-        private void RestartPlayer()
-        {
-            transform.position = _startPos;
+            _deltaX = 1;
         }
         private IEnumerator StartRun()
         {
             while (_stop)
             {
-                _levelTime += Time.deltaTime;
-                if (_levelTime >= 5)
-                {
-                    _deltaX++;
-                    _levelTime = 0f;
-                }
-                float NewX = Mathf.Clamp(_speed * Time.deltaTime, _deltaX * Time.deltaTime, _deltaX + _speed * Time.deltaTime);
-                transform.position += new Vector3(NewX, 0,0);
-
+                transform.Translate(_deltaX/10 * _speed, 0, 0); // Magic division by 10
+                
                 yield return new WaitForFixedUpdate();
             }
             yield return null;
         }
-        
-        private IEnumerator EndRun()
-        {
-            while (true)
-            {
-                
-            }
-            yield return null;
-        }
 
+        private void CoroutineJump()
+        {
+            if(IsGrounded())
+                StartCoroutine(Jump());
+        }
+        private void RestartPlayer()
+        {
+            transform.position = _startPos;
+        }
         private bool IsGrounded()
         {
-            // ��������� BoxCast ����, ����� ��������� ������������ � ����������� �����
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _ofssetYCollider, _layerGround);
-
+            
             return hit.collider != null;
         }
         private IEnumerator Jump()
-        {
-           
+        { 
+            Debug.Log(IsGrounded());
             if (IsGrounded() && !_isJump)
             {
                 _audioService.PlaySound(AudioType.JUMP);

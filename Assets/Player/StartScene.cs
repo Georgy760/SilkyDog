@@ -16,7 +16,7 @@ namespace Assets.Player
          
         private SessionService _session;
         [SerializeField] float _speed;
-        [SerializeField] Transform _target;
+        //[SerializeField] Transform _target;
         [Inject]
         private void Constuct(ISessionService service)
         {
@@ -31,9 +31,9 @@ namespace Assets.Player
         { 
             while (true)
             {
-                if (transform.position.x >= _target.position.x) break;
+                if (transform.position.x >= 0f) break;
                 // Вычисляем новую позицию объекта только по оси X, используя интерполяцию
-                float newX = Mathf.Lerp(transform.position.x, _target.position.x + 1f, _speed * Time.deltaTime);
+                float newX = Mathf.Lerp(transform.position.x, 0 + 1f, _speed * Time.deltaTime);
 
                 // Получаем текущую позицию объекта по остальным осям
                 Vector3 currentPosition = transform.position;
