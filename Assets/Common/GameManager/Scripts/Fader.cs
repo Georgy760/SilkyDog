@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Scripts.ManagerService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,7 @@ namespace Common.GameManager.Scripts
         [SerializeField] private AnimationClip _fadeOutAnimation;
         [SerializeField] private AnimationClip _fadeInAnimation;
 
-        private IGameManager _gameManager;
-
+        private IGameManager _gameManager; 
         [Inject]
         void Construct(IGameManager manager)
         {
@@ -32,7 +32,6 @@ namespace Common.GameManager.Scripts
                
                 _mainMenuAnimator.clip = _fadeOutAnimation;
                 _mainMenuAnimator.Play(); 
-                
 
             }
             if (previousState == GameState.FadePhase && currentState == GameState.RUNNING)

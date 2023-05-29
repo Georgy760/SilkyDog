@@ -21,7 +21,6 @@ public class DisplayDistance : MonoBehaviour
 
         _service.OnStartRun += StartGame;
         _service.OnEndRun += EndGame;
-        
     }
     private void OnDestroy()
     {
@@ -30,11 +29,11 @@ public class DisplayDistance : MonoBehaviour
     }
     private void StartGame()
     {
-        _isStop = true; 
+        _isStop = true;
         _curretLevelToChange = _distanceBettwenLevel;
         StartCoroutine(StartRun());
     }
-    
+
     private void EndGame()
     {
         _isStop = false;
@@ -42,15 +41,15 @@ public class DisplayDistance : MonoBehaviour
     IEnumerator StartRun()
     {
         int x = (int)player.position.x;
-        while (_isStop) 
+        while (_isStop)
         {
             _service.record = (int)player.position.x - x;
-            _text.text ="Distance:" + _service.record.ToString();
+            _text.text = "Distance:" + _service.record.ToString();
             //Debug.Log(_curretLevelToChange);
             if ((float)_service.record / (float)_curretLevelToChange >= 1)
             {
                 Debug.Log("Chaneg level");
-                OnChangeLevel?.Invoke();    
+                OnChangeLevel?.Invoke();
                 _curretLevelToChange += _distanceBettwenLevel;
             }
             yield return new WaitForFixedUpdate();

@@ -80,15 +80,15 @@ namespace Player
         private void TouchTriggerPress(Vector2 obj)
         {
             Debug.Log($"Press: {obj}");
-            if(obj.x > 0f) MoveRightPress();
-            if(obj.x < 0f) MoveLeftPress();
-            if(obj.y > 0f && obj.x < 0f) CoroutineJump();
+            if(obj.x > Screen.width/2f && obj.y < Screen.height / 2f) MoveRightPress();
+            if(obj.x < Screen.width / 2f && obj.y < Screen.height / 2f) MoveLeftPress();
+            if(obj.y > Screen.height / 2f) CoroutineJump();
         }
         private void TouchTriggerRelease(Vector2 obj)
         {
             Debug.Log($"Release: {obj}");
-            if(obj.x > 0f) MoveRightRelease();
-            if(obj.x < 0f) MoveLeftRelease();
+            if(obj.x > Screen.width / 2f && obj.y < Screen.height / 2f) MoveRightRelease();
+            if(obj.x < Screen.width / 2f && obj.y < Screen.height / 2f) MoveLeftRelease();
         }
         private void MoveLeftRelease()
         {

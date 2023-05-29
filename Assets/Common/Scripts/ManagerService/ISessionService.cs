@@ -7,7 +7,9 @@ namespace Common.Scripts.ManagerService
     {
         event Action OnStartRun;
         event Action OnEndRun;
-        event Action OnRestartSession;
+        event Action OnRestartSession; 
+        event Action<LevelType> OnLevelChange;
+
         int record { get; set; }
         int money { get; set; }
 
@@ -15,6 +17,8 @@ namespace Common.Scripts.ManagerService
 
         List<ObstaclesScritableObjects> obstacles { get; set; }
         public void EndRun();
-        public void RestartGame(); 
+        public void RestartGame();
+
+        public void ChangeLevel();
     }
 }

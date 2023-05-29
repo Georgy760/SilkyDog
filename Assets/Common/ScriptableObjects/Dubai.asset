@@ -17,6 +17,9 @@ MonoBehaviour:
   - {fileID: 2916721510870625669, guid: 729380661a2d4f64fb1dc29dd641bea9, type: 3}
   - {fileID: 8317455513482142029, guid: 2df1b3fa8651b7c44bdc1c2860c46cfa, type: 3}
   - {fileID: 2734170432854635198, guid: d7ac56d067b2a4547a77feade946b6f1, type: 3}
+  - {fileID: 6264429043948743931, guid: d1111d355c5ed7047b97f3ac322cc14c, type: 3}
+  - {fileID: 7392216974155420076, guid: 326f4e751f1737b4885d3d15572420fb, type: 3}
+  - {fileID: 4543627743109723542, guid: b7d5884411419ee4a9aa86979d5cc860, type: 3}
   levelType: 2
   BackGround: {fileID: 21300000, guid: fd13b55e8106a7549be87777ada8d478, type: 3}
   Floor: {fileID: 21300000, guid: 74cc655ecbc70624a84dc16cc23d4095, type: 3}

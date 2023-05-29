@@ -54,13 +54,13 @@ namespace Common.Scripts.ManagerService
         {
             Debug.Log("Touch started " + _playerActions.MobilePlay.TouchPosition.ReadValue<Vector2>());
             StartTouchPos = _playerActions.MobilePlay.TouchPosition.ReadValue<Vector2>();
-            OnTouchStart?.Invoke(_playerActions.MobilePlay.TouchPosition.ReadValue<Vector2>().normalized);
+            OnTouchStart?.Invoke(_playerActions.MobilePlay.TouchPosition.ReadValue<Vector2>());
         }
         private void EndTouch(InputAction.CallbackContext context)
         {
             Debug.Log("Touch ended " + _playerActions.MobilePlay.TouchPosition.ReadValue<Vector2>() + "\n" +
-                      $"Vector2: {(_playerActions.MobilePlay.TouchPosition.ReadValue<Vector2>() - StartTouchPos).normalized}");
-            OnTouchEnd?.Invoke((_playerActions.MobilePlay.TouchPosition.ReadValue<Vector2>() - StartTouchPos).normalized);
+                      $"Vector2: {(_playerActions.MobilePlay.TouchPosition.ReadValue<Vector2>()).normalized}");
+            OnTouchEnd?.Invoke(_playerActions.MobilePlay.TouchPosition.ReadValue<Vector2>());
         }
         private void SpaceTap(InputAction.CallbackContext obj)
         {

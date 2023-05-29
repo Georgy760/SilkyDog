@@ -29,7 +29,7 @@ namespace Common.GameManager.Scripts
             OnMainMenuFadeComplete += HandleMainMenuFadeComplete;
             OnGameStateChanged?.Invoke(GameState.PREGAME, CurrentGameState);
             MovingObj.OnDeath += ResultLevel;
-            DisplayDistance.OnChangeLevel += () => UpdateState(GameState.FadePhase);
+            DisplayDistance.OnChangeLevel += ChangeLevel;
         }
         
         private void Start()
@@ -40,8 +40,13 @@ namespace Common.GameManager.Scripts
         {
             _playerActions.Menu.EscTap.performed -= EscTap;
             OnMainMenuFadeComplete -= HandleMainMenuFadeComplete;
+            MovingObj.OnDeath -= ResultLevel;
+            DisplayDistance.OnChangeLevel -= ChangeLevel;
         }
-
+        private void ChangeLevel()
+        {
+            UpdateState(GameState.FadePhase);
+        }
         public void HandleMainMenuFadeComplete(bool fadeIn)
         {
             ShowMainMenu?.Invoke(!fadeIn);
