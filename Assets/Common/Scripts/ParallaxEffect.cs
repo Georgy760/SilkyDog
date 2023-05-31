@@ -40,6 +40,7 @@ namespace Common.Scripts
         }
         void EndMoveBackImage()
         {
+            Debug.Log("Stops");
             _isStop = false;
             StopCoroutine(StartRun());
         }

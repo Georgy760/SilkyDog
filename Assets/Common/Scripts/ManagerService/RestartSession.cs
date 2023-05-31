@@ -28,8 +28,6 @@ namespace Common.Scripts.ManagerService
                 (previousState != GameState.RESULT && GameState.PAUSED != previousState)) return;
             _sessionService.EndRun();
             _sessionService.RestartGame();
-        }
-
-        
+        } 
     }
 }

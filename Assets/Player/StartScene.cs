@@ -1,13 +1,7 @@
-﻿using Common.Scripts.ManagerService;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Common.Scripts.ManagerService; 
+using System.Collections; 
 using UnityEngine;
-using Zenject;
-using static UnityEngine.GraphicsBuffer;
+using Zenject; 
 
 namespace Assets.Player
 {
@@ -16,36 +10,50 @@ namespace Assets.Player
          
         private SessionService _session;
         [SerializeField] float _speed;
-        //[SerializeField] Transform _target;
+        private bool _stop = false;
+
+        private Vector3 _startPos;
         [Inject]
         private void Constuct(ISessionService service)
         {
             _session = (SessionService)service;
-            _session.OnRestartSession += Start;
+            _session.OnRestartSession += Starts;
+            _startPos = transform.localPosition;
+        } 
+        private void OnDestroy()
+        {
+            _session.OnRestartSession -= Starts;  
         }
-        void Start()
+        private void Start()
         {
             StartCoroutine(StartCatscene());
         }
+        void Starts()
+        {
+            transform.localPosition = _startPos;
+            if (!_stop)
+            { 
+                
+                StartCoroutine(StartCatscene());
+            }
+        }
         IEnumerator StartCatscene()
         { 
+            _stop  = true;
             while (true)
-            {
-                if (transform.position.x >= 0f) break;
-                // Вычисляем новую позицию объекта только по оси X, используя интерполяцию
-                float newX = Mathf.Lerp(transform.position.x, 0 + 1f, _speed * Time.deltaTime);
-
-                // Получаем текущую позицию объекта по остальным осям
-                Vector3 currentPosition = transform.position;
-
-                // Обновляем только позицию по оси X
+            { 
+                if (transform.localPosition.x >= 0f) break; 
+                float newX = Mathf.Lerp(transform.localPosition.x, 0 + 1f, _speed * Time.deltaTime);
+                 
+                Vector3 currentPosition = transform.localPosition;
+                 
                 currentPosition.x = newX;
-
-                // Применяем новую позицию к объекту
-                transform.position = currentPosition;
+                 
+                transform.localPosition = currentPosition;
                 yield return new WaitForFixedUpdate();
             }
-            _session.StartGame();
+            _stop = false;
+            _session.StartGame();  
         }
     }
 }

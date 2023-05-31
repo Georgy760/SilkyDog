@@ -67,18 +67,8 @@ public class CameraMove : MonoBehaviour
     }
     
     private void RestartGame()
-    {
-        StopCoroutine(StartChaseOnPlayer());
+    { 
         transform.position = _StartPos;
-    }
-    private IEnumerator StartChaseOnPlayer()
-    {
-        while (_stop)
-        {
-            Vector3 desiredPosition = new Vector3(_player.position.x + _offsetX, transform.position.y, transform.position.z); 
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, _smoothSpeed); 
-            transform.position = smoothedPosition; 
-            yield return new WaitForFixedUpdate();
-        }
-    }
+        _stop = false; 
+    } 
 }

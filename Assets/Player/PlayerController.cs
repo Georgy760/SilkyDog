@@ -17,10 +17,8 @@ namespace Player
         [SerializeField] private LayerMask _layerGround;
         
         [SerializeField] private bool _isJump = false;
-        [SerializeField] private float _ofssetYCollider;
-        private float _levelTime = 0f;
+        [SerializeField] private float _ofssetYCollider; 
         [SerializeField] private float _deltaX;
-        private Vector3 _startPos;
         private bool _stop = true;
         
         private IPlayerInputService _playerInputService;
@@ -42,11 +40,9 @@ namespace Player
             
             _sessionService = sessionService;
             _sessionService.OnStartRun += OnStartRun;
-            _sessionService.OnRestartSession += RestartPlayer;
             _sessionService.OnEndRun += OnEndRun;
             
             _ofssetYCollider = GetComponent<BoxCollider2D>().size.y / 2f + 0.1f ;
-            _startPos = transform.position;
             
             _audioService = audioService;
         }
@@ -60,7 +56,6 @@ namespace Player
             _playerInputService.OnTouchStart -= TouchTriggerPress;
             _playerInputService.OnTouchEnd -= TouchTriggerRelease;
             _sessionService.OnStartRun -= OnStartRun;
-            _sessionService.OnRestartSession -= RestartPlayer;
             _sessionService.OnEndRun -= OnEndRun;
         }
 
@@ -72,8 +67,7 @@ namespace Player
         private void OnStartRun()
         {
             _stop = true;
-            _deltaX = _StartdeltaX;
-            _levelTime = 0f;
+            _deltaX = _StartdeltaX; 
             StartCoroutine(StartRun());
         }
 
@@ -92,22 +86,22 @@ namespace Player
         }
         private void MoveLeftRelease()
         {
-            _deltaX = 0;
+            _deltaX += 1;
         }
 
         private void MoveLeftPress()
         {
-            _deltaX = -1;
+            _deltaX += -1;
         }
 
         private void MoveRightRelease()
         {
-            _deltaX = 0;
+            _deltaX += -1;
         }
 
         private void MoveRightPress()
         {
-            _deltaX = 1;
+            _deltaX += 1;
         }
         private IEnumerator StartRun()
         {
@@ -125,10 +119,7 @@ namespace Player
             if(IsGrounded())
                 StartCoroutine(Jump());
         }
-        private void RestartPlayer()
-        {
-            transform.position = _startPos;
-        }
+       
         private bool IsGrounded()
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _ofssetYCollider, _layerGround);
@@ -149,6 +140,9 @@ namespace Player
                 {
                     expiredTime += Time.deltaTime;
                     progress = expiredTime / _duratation;
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, _ofssetYCollider/2, _layerGround);
+                    if (hit.collider != null)
+                        break;
 
                     transform.position = new Vector3(transform.position.x, startPos.y + _curveDeltay.Evaluate(progress), transform.position.z);
                     yield return new WaitForFixedUpdate();
