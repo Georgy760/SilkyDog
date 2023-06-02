@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using Common.Scripts;
 using Common.Scripts.ManagerService;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 using AudioType = Common.Scripts.AudioType;
 
-namespace Player
+namespace Common.Player
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float _StartdeltaX = 5f;
@@ -18,10 +20,11 @@ namespace Player
 
         [SerializeField] private bool _isJump = false;
         [SerializeField] private float _ofssetYCollider;
+        
         [SerializeField] private float _deltaX;
         [SerializeField] private Camera _camera;
         private bool _stop = true;
-
+        private BoxCollider2D _collider2D;
         private IPlayerInputService _playerInputService;
         private ISessionService _sessionService;
         private IAudioService _audioService;
@@ -43,7 +46,8 @@ namespace Player
             _sessionService.OnStartRun += OnStartRun;
             _sessionService.OnEndRun += OnEndRun;
 
-            _ofssetYCollider = GetComponent<BoxCollider2D>().size.y / 2f + 0.1f;
+            _collider2D = GetComponent<BoxCollider2D>();
+            _ofssetYCollider = _collider2D.size.y / 2f + 0.1f;
 
             _audioService = audioService;
         }
@@ -59,6 +63,15 @@ namespace Player
             _sessionService.OnStartRun -= OnStartRun;
             _sessionService.OnEndRun -= OnEndRun;
         }
+
+        #if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawRay(transform.position, Vector2.down * 1.8f); //TODO 1.8f - magic value of sobaka bottom
+            //Gizmos.DrawSphere(transform.position, 5f);
+            Gizmos.color = Color.red;
+        }
+        #endif
 
         private void OnEndRun()
         {
@@ -119,9 +132,12 @@ namespace Player
         {
             while (_stop)
             {
-                float playerX = transform.position.x;
-                float MaxCam = _camera.transform.position.x + _camera.orthographicSize * 2;
-                float MinCam = _camera.transform.position.x - _camera.orthographicSize * 2;
+                var playerX = transform.position.x;
+                var position = _camera.transform.position;
+                var MaxCam = position.x + _camera.orthographicSize * 2;
+                
+                var MinCam = position.x - _camera.orthographicSize * 2;
+                
                 if (playerX <= MaxCam && playerX >= MinCam)
                     transform.Translate(_deltaX / 10 * _speed, 0, 0); // Magic division by 10
                 else if (playerX <= MaxCam)
@@ -142,7 +158,6 @@ namespace Player
         private bool IsGrounded()
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _ofssetYCollider, _layerGround);
-
             return hit.collider != null;
         }
         private IEnumerator Jump()
@@ -159,6 +174,7 @@ namespace Player
                 {
                     expiredTime += Time.deltaTime;
                     progress = expiredTime / _duratation;
+                    
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, _ofssetYCollider / 2, _layerGround);
                     if (hit.collider != null)
                         break;

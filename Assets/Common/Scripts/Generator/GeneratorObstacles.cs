@@ -10,19 +10,20 @@ using Random = UnityEngine.Random;
 public class GeneratorObstacles : MonoBehaviour
 {
 
-    [SerializeField] private float _offsetYmin = 0;
+    [SerializeField] private float _offsetYmin;
     [SerializeField] private Transform _partentObstacles;
     [SerializeField] private Camera _camera;
-
-    public static event Action<Vector2> OnSpawnEnemy;
+    
     private List<GameObject> _prevsObstacles = new List<GameObject>();
     private Dictionary<LevelType, GameObject> _baseObstacles = new Dictionary<LevelType, GameObject>();
     private LevelType _level;
     private bool _spawnEnemy = false;
 
-    ISessionService _sessionService;
+    public static event Action<Vector2> OnSpawnEnemy;
+    
+    private ISessionService _sessionService;
     [Inject]
-    void Constuct(ISessionService sessionService)
+    void Construct(ISessionService sessionService)
     {
         _sessionService = sessionService;
         _sessionService.OnStartRun += StartGeneration;
@@ -49,26 +50,26 @@ public class GeneratorObstacles : MonoBehaviour
     {
         while (true)
         {
-            float _sizeCamera = _camera.orthographicSize * 3;
-            float distanceBetweenCameraAndObstale = -_sizeCamera - 1;
+            float sizeCamera = _camera.orthographicSize * 3;
+            float distanceBetweenCameraAndObstale = -sizeCamera - 1;
             if (_prevsObstacles.Count > 0)
                 distanceBetweenCameraAndObstale = _prevsObstacles.Last().transform.position.x - _camera.transform.position.x;
             if (distanceBetweenCameraAndObstale < 0 && _spawnEnemy)
             {
-                Vector2 pos = new Vector2(_camera.transform.position.x + _sizeCamera, _offsetYmin);
-                OnSpawnEnemy.Invoke(pos);
+                Vector2 pos = new Vector2(_camera.transform.position.x + sizeCamera, _offsetYmin);
+                OnSpawnEnemy?.Invoke(pos);
                 _spawnEnemy = false;
             }
-            if (distanceBetweenCameraAndObstale < -_sizeCamera)
+            if (distanceBetweenCameraAndObstale < -sizeCamera)
             {
 
                 DestroyObstacle();
                 int counteObstacle = Random.Range(1, 4);
 
-                float minX = _camera.transform.position.x + _sizeCamera;
-                float maxX = minX + _sizeCamera;
+                float minX = _camera.transform.position.x + sizeCamera;
+                float maxX = minX + sizeCamera;
                 float minY = _offsetYmin; //Magic Y
-                float maxY = _sizeCamera;
+                float maxY = sizeCamera;
                 float x = Random.Range(minX, maxX);
                 float y = Random.Range(minY, minY + 2);//Magic 2
 
@@ -78,7 +79,7 @@ public class GeneratorObstacles : MonoBehaviour
 
                 while (counteObstacle != 0 && tryPlace < 100)
                 {
-                    x = Random.Range(_prevsObstacles.Last().transform.position.x, _prevsObstacles.Last().transform.position.x + _sizeCamera);
+                    x = Random.Range(_prevsObstacles.Last().transform.position.x, _prevsObstacles.Last().transform.position.x + sizeCamera);
                     y = Random.Range(minY, maxY);
 
                     if (y > 2f + minY && y <= 4f + minY) continue; //Magic 2 and 4

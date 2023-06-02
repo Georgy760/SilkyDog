@@ -1,9 +1,9 @@
-﻿using Common.Scripts.ManagerService; 
-using System.Collections; 
+﻿using System.Collections;
+using Common.Scripts.ManagerService;
 using UnityEngine;
-using Zenject; 
+using Zenject;
 
-namespace Assets.Player
+namespace Common.Player
 {
     class StartScene : MonoBehaviour
     {
@@ -14,7 +14,7 @@ namespace Assets.Player
 
         private Vector3 _startPos;
         [Inject]
-        private void Constuct(ISessionService service)
+        private void Construct(ISessionService service)
         {
             _session = (SessionService)service;
             _session.OnRestartSession += Starts;
@@ -42,7 +42,7 @@ namespace Assets.Player
             _stop  = true;
             while (true)
             { 
-                if (transform.localPosition.x >= 0f) break; 
+                if (transform.localPosition.x >= 0f) break;
                 float newX = Mathf.Lerp(transform.localPosition.x, 0 + 1f, _speed * Time.deltaTime);
                  
                 Vector3 currentPosition = transform.localPosition;
