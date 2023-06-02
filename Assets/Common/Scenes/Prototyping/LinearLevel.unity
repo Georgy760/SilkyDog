@@ -377,7 +377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.5, y: 9.300003}
+  m_AnchoredPosition: {x: 6.5, y: 9.299988}
   m_SizeDelta: {x: 955, y: 436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366709130
@@ -1110,6 +1110,7 @@ MonoBehaviour:
   _isJump: 0
   _ofssetYCollider: 0
   _deltaX: 0
+  _camera: {fileID: 1828429966}
 --- !u!4 &1538539936
 Transform:
   m_ObjectHideFlags: 0
@@ -1580,6 +1581,7 @@ MonoBehaviour:
   _offsetX: 20
   _smoothSpeed: 0.05
   _speed: 5
+  _maxDeltaX: 10
 --- !u!114 &1828429969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1603,6 +1605,8 @@ GameObject:
   - component: {fileID: 1856717633}
   - component: {fileID: 1856717632}
   - component: {fileID: 1856717634}
+  - component: {fileID: 1856717635}
+  - component: {fileID: 1856717636}
   m_Layer: 0
   m_Name: GeneratorFloor
   m_TagString: Untagged
@@ -1655,6 +1659,34 @@ MonoBehaviour:
   _offsetYmin: 5
   _partentObstacles: {fileID: 2112908593}
   _camera: {fileID: 1828429966}
+--- !u!114 &1856717635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856717631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d831384a329bc2449981c6be25e4074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyObjects:
+  - {fileID: 7392216974155420076, guid: 326f4e751f1737b4885d3d15572420fb, type: 3}
+  - {fileID: 6264429043948743931, guid: d1111d355c5ed7047b97f3ac322cc14c, type: 3}
+--- !u!114 &1856717636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856717631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8835157734d3f04ba9742d1bee1f106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moneyObjects: {fileID: 4543627743109723542, guid: b7d5884411419ee4a9aa86979d5cc860, type: 3}
 --- !u!1001 &2029973542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1734,6 +1766,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8132280472405324871, guid: e36461e9635bcbe4fae938668205aab8, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1828429966}
     - target: {fileID: 8132280472405324871, guid: e36461e9635bcbe4fae938668205aab8, type: 3}
       propertyPath: _numPlatform
       value: 1
@@ -1871,5 +1907,9 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8132280472405324871, guid: e36461e9635bcbe4fae938668205aab8, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1828429966}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e36461e9635bcbe4fae938668205aab8, type: 3}

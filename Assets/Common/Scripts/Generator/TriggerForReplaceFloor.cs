@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,20 @@ namespace Common.Scripts.Generator
     {
         public static event Action<int> OnTriggerToReplace;
         [SerializeField] private int _numPlatform;
-        private void OnTriggerEnter2D(Collider2D collision)
+        [SerializeField] private Camera _camera;
+        void Start ()
         {
-            OnTriggerToReplace?.Invoke(_numPlatform);
+            StartCoroutine(CheckOnCamera());
+        }
+
+        IEnumerator CheckOnCamera()
+        {
+            while(true)
+            {
+                if (_camera.transform.position.x >= transform.position.x && _camera.transform.position.x <= transform.position.x + 1)
+                    OnTriggerToReplace.Invoke(_numPlatform);
+                yield return new WaitForFixedUpdate();
+            }
         }
 
     }

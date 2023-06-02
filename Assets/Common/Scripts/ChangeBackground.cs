@@ -38,7 +38,8 @@ namespace Common.Scripts
         
         private void ChangeLevel(bool isCompleteFade)
         {
-            _service.ChangeLevel();
+            _service.ChangeLevel(); 
+            _gameManager.EndLevelChange();
         }
 
         private void ChangeBackGround(LevelType level)

@@ -12,7 +12,7 @@ public class CameraMove : MonoBehaviour
     [SerializeField] private float _offsetX;
     [SerializeField] private float _smoothSpeed = 0.125f;
     [SerializeField] private float _speed = 1f;
-    private float _offsetY;
+    [SerializeField] private float _maxDeltaX = 10f;
     private float _levelTime = 0f;
     private Vector3 _StartPos;
     private bool _stop = true;
@@ -53,7 +53,7 @@ public class CameraMove : MonoBehaviour
         while (_stop)
         {
             _levelTime += Time.deltaTime;
-            if (_levelTime >= 5)
+            if (_levelTime >= 5 && _maxDeltaX > _deltaX)
             {
                 _deltaX++;
                 _levelTime = 0f;
