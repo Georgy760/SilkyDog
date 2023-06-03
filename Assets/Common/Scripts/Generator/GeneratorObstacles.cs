@@ -22,8 +22,9 @@ public class GeneratorObstacles : MonoBehaviour
     public static event Action<Vector2> OnSpawnEnemy;
     
     private ISessionService _sessionService;
+    private IServiceGeneratorEnemy _generatorEnemy;
     [Inject]
-    void Construct(ISessionService sessionService)
+    void Construct(ISessionService sessionService , IServiceGeneratorEnemy generatorEnemy)
     {
         _sessionService = sessionService;
         _sessionService.OnStartRun += StartGeneration;
@@ -31,6 +32,8 @@ public class GeneratorObstacles : MonoBehaviour
         foreach (ObstaclesScritableObjects obstaclesScritableObjects in _sessionService.obstacles)
             _baseObstacles.Add(obstaclesScritableObjects.levelType, obstaclesScritableObjects.obstacle);
         _level = _sessionService.levelType;
+
+        _generatorEnemy = generatorEnemy;
 
     }
 
@@ -56,8 +59,13 @@ public class GeneratorObstacles : MonoBehaviour
                 distanceBetweenCameraAndObstale = _prevsObstacles.Last().transform.position.x - _camera.transform.position.x;
             if (distanceBetweenCameraAndObstale < 0 && _spawnEnemy)
             {
-                Vector2 pos = new Vector2(_camera.transform.position.x + sizeCamera, _offsetYmin);
-                OnSpawnEnemy?.Invoke(pos);
+
+                Vector3 pos = new Vector3(_camera.transform.position.x + sizeCamera, _offsetYmin,0);
+                if(Random.Range(0,2) == 0)
+                    _generatorEnemy.SpawnEnemy(pos);
+                else
+                    _generatorEnemy.SpawnMoney(pos);
+
                 _spawnEnemy = false;
             }
             if (distanceBetweenCameraAndObstale < -sizeCamera)

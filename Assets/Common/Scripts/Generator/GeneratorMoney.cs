@@ -1,15 +1,25 @@
 using UnityEngine;
+using Zenject;
 
 public class GeneratorMoney : MonoBehaviour
 {
-    [SerializeField] private GameObject _moneyObjects;
+    private GameObject _moneyObjects;
     private GameObject _prevMoney;
-    private void Awake()
+    IServiceGeneratorEnemy _generatorEnemy;
+    [Inject]
+    void Construct(IServiceGeneratorEnemy generatorEnemy)
     {
-        GeneratorObstacles.OnSpawnEnemy += SpawnEnemy;
+        _generatorEnemy = generatorEnemy;
+        _generatorEnemy.OnSpawnMoney += SpawnMoney;
+        _moneyObjects = generatorEnemy.moneyPrefab;
     }
 
-    private void SpawnEnemy(Vector2 cameraPos)
+    private void OnDestroy()
+    {
+        _generatorEnemy.OnSpawnMoney -= SpawnMoney;
+    }
+
+    private void SpawnMoney(Vector3 cameraPos)
     {
         if (_prevMoney != null)
             Destroy(_prevMoney.gameObject);

@@ -170,6 +170,7 @@ namespace Common.Player
                 float expiredTime = 0f;
                 float progress = 0f;
                 Vector2 startPos = transform.position;
+                GetComponent<Rigidbody2D>().gravityScale = 0;
                 while (progress < 1f)
                 {
                     expiredTime += Time.deltaTime;
@@ -182,6 +183,7 @@ namespace Common.Player
                     transform.position = new Vector3(transform.position.x, startPos.y + _curveDeltay.Evaluate(progress), transform.position.z);
                     yield return new WaitForFixedUpdate();
                 }
+                GetComponent<Rigidbody2D>().gravityScale = 1;
                 _isJump = false;
             }
 

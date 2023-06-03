@@ -1,19 +1,47 @@
+using Common.Scripts.ManagerService;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class GeneratorEnemy : MonoBehaviour
 {
-    [SerializeField] List<GameObject> _enemyObjects;
+    [SerializeField] Transform _parentEnemy;
 
-    private void Awake()
+
+    private List<GameObject> _enemyObjects = new List<GameObject>();
+
+    private GameObject _prevEnemy;
+
+    IServiceGeneratorEnemy _generatorEnemy;
+    ISessionService _sessionService;
+    [Inject]
+    void Construct(IServiceGeneratorEnemy generatorEnemy, ISessionService sessionService)
     {
-        GeneratorObstacles.OnSpawnEnemy += SpawnEnemy;
+        _generatorEnemy = generatorEnemy;
+        _generatorEnemy.OnSpawnEnemy += SpawnEnemy;
+        _enemyObjects = generatorEnemy.enemyPrefab;
+
+        _sessionService = sessionService;
+        _sessionService.OnEndRun += DestroyEnemy;
     }
 
-    private void SpawnEnemy(Vector2 cameraPos)
+    private void OnDestroy()
     {
-        GameObject enemy = _enemyObjects[Random.Range(0,_enemyObjects.Count )];
-        Instantiate(enemy, cameraPos, Quaternion.identity);
+        _generatorEnemy.OnSpawnEnemy -= SpawnEnemy;
+        _sessionService.OnEndRun -= DestroyEnemy;
+    }
+
+    private void DestroyEnemy()
+    {
+        if (_prevEnemy != null)
+            Destroy(_prevEnemy.gameObject);
+    }
+
+    private void SpawnEnemy(Vector3 cameraPos)
+    { 
+        DestroyEnemy();
+        GameObject enemy = _enemyObjects[Random.Range(0, _enemyObjects.Count)];
+        _prevEnemy = Instantiate(enemy, cameraPos, Quaternion.identity, _parentEnemy);
     }
 }
