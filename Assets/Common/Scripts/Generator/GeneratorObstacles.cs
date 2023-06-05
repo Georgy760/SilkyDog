@@ -44,6 +44,7 @@ public class GeneratorObstacles : MonoBehaviour
 
     void DestroyObstacle()
     {
+        _spawnEnemy = false;
         foreach (GameObject obstacle in _prevsObstacles)
             Destroy(obstacle);
         _prevsObstacles.Clear();

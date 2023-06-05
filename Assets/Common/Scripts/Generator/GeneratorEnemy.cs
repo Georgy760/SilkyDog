@@ -23,13 +23,13 @@ public class GeneratorEnemy : MonoBehaviour
         _enemyObjects = generatorEnemy.enemyPrefab;
 
         _sessionService = sessionService;
-        _sessionService.OnEndRun += DestroyEnemy;
+        _sessionService.OnRestartSession += DestroyEnemy;
     }
 
     private void OnDestroy()
     {
         _generatorEnemy.OnSpawnEnemy -= SpawnEnemy;
-        _sessionService.OnEndRun -= DestroyEnemy;
+        _sessionService.OnRestartSession -= DestroyEnemy;
     }
 
     private void DestroyEnemy()

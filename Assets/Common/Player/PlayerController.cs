@@ -24,6 +24,8 @@ namespace Common.Player
         [SerializeField] private float _deltaX;
         [SerializeField] private Camera _camera;
         private bool _stop = true;
+        private bool _leftPress = false;
+        private bool _rightPress = false;
         private BoxCollider2D _collider2D;
         private IPlayerInputService _playerInputService;
         private ISessionService _sessionService;
@@ -86,19 +88,26 @@ namespace Common.Player
 
         private void TouchTriggerPress(Vector2 obj)
         {
-            Debug.Log($"Press: {obj}");
+            Debug.Log($"Press: {obj} ");
+            Debug.Log("left" + _leftPress + "right" + _rightPress);
+            if (obj.y > Screen.height / 2f && !_leftPress && !_rightPress)
+            {
+                CoroutineJump();
+                return;
+            }
             if (obj.x > Screen.width / 2f && obj.y < Screen.height / 2f) MoveRightPress();
             if (obj.x < Screen.width / 2f && obj.y < Screen.height / 2f) MoveLeftPress();
-            if (obj.y > Screen.height / 2f) CoroutineJump();
+            
         }
         private void TouchTriggerRelease(Vector2 obj)
         {
             Debug.Log($"Release: {obj}");
-            if (obj.x > Screen.width / 2f && obj.y < Screen.height / 2f) MoveRightRelease();
-            if (obj.x < Screen.width / 2f && obj.y < Screen.height / 2f) MoveLeftRelease();
+            if ( _rightPress) MoveRightRelease();
+            if (_leftPress) MoveLeftRelease();
         }
         private void MoveLeftRelease()
-        {
+        { 
+            _leftPress = false;
             if (_deltaX + 1 <= _StartdeltaX + 1)
                 _deltaX += 1;
             else
@@ -107,6 +116,8 @@ namespace Common.Player
 
         private void MoveLeftPress()
         {
+            Debug.Log("Press Left");
+            _leftPress = true;
             if (_deltaX - 1 >= _StartdeltaX - 1)
                 _deltaX += -1;
             else
@@ -115,6 +126,8 @@ namespace Common.Player
 
         private void MoveRightRelease()
         {
+
+            _rightPress = false;
             if (_deltaX - 1 >= _StartdeltaX - 1)
                 _deltaX += -1;
             else
@@ -123,6 +136,8 @@ namespace Common.Player
 
         private void MoveRightPress()
         {
+            Debug.Log("RightPress");
+            _rightPress = true;
             if (_deltaX + 1 <= _StartdeltaX + 1)
                 _deltaX += 1;
             else
@@ -151,6 +166,7 @@ namespace Common.Player
 
         private void CoroutineJump()
         {
+            Debug.Log("Press jump");
             if (IsGrounded())
                 StartCoroutine(Jump());
         }
@@ -162,7 +178,7 @@ namespace Common.Player
         }
         private IEnumerator Jump()
         {
-            Debug.Log(IsGrounded());
+            Debug.Log(IsGrounded()); 
             if (IsGrounded() && !_isJump)
             {
                 _audioService.PlaySound(AudioType.JUMP);

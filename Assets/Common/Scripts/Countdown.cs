@@ -16,6 +16,7 @@ namespace Common.Scripts
         {
             _sessionService = sessionService;
             _animation = GetComponent<Animation>();
+            _countdownClip.legacy = true;
             _animation.clip = _countdownClip;
             _sessionService.OnRestartSession += StartCountdown;
             
@@ -33,6 +34,7 @@ namespace Common.Scripts
 
         private void StartCountdown()
         {
+            
             _animation.Play();
         }
     }
